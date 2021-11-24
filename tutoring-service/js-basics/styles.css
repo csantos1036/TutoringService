@@ -1,0 +1,130 @@
+@font-face {
+    font-family: Effra;
+    src: url("Effra.ttf");
+ }
+    .frontTitle{
+        position: absolute;
+width: 155px;
+height: 76px;
+left: 618px;
+top: 80px;
+
+
+font-family: Effra;
+font-style: normal;
+font-weight: normal;
+font-size: 64px;
+line-height: 76px;
+/* identical to box height */
+color: #5A6E81;
+
+         }
+         .textBox{
+            position: absolute;
+width: 594px;
+height: 66px;
+left: 384px;
+top: 329px;
+
+border: 1px solid #000000;
+box-sizing: border-box;
+border-radius: 15px;
+         }
+         
+.emailText{
+position: absolute;
+width: 85px;
+height: 43px;
+left: 384px;
+top: 286px;
+
+font-family: Effra;
+font-style: normal;
+font-weight: normal;
+font-size: 36px;
+line-height: 43px;
+color: #5A6E81;
+
+}
+.passwordText{
+position: absolute;
+width: 149px;
+height: 43px;
+left: 384px;
+top: 418px;
+
+font-family: Effra;
+font-style: normal;
+font-weight: normal;
+font-size: 36px;
+line-height: 43px;
+/* identical to box height */
+
+
+color: #5A6E81;
+
+}
+.textBox_2{
+
+position: absolute;
+width: 594px;
+height: 66px;
+left: 384px;
+top: 461px;
+
+border: 1px solid #000000;
+box-sizing: border-box;
+border-radius: 15px;
+font-family: Effra;
+font-style: normal;
+font-weight: normal;
+font-size: 36px;
+line-height: 43px;
+}
+.tb{
+    position: absolute;
+width: 594px;
+height: 66px;
+left: 384px;
+top: 329px;
+
+border: 1px solid #000000;
+box-sizing: border-box;
+border-radius: 15px;
+font-family: Effra;
+font-style: normal;
+font-weight: normal;
+font-size: 36px;
+line-height: 43px;
+
+}
+.submitBox
+{
+    position: absolute;
+width: 340px;
+height: 54px;
+left: 511px;
+top: 581px;
+
+background: #24517A;
+border: 1px solid #24517A;
+box-sizing: border-box;
+border-radius: 30px;
+}
+.subTxt{
+    position: absolute;
+width: 84px;
+height: 38px;
+left: 639px;
+top: 589px;
+
+font-family: Effra;
+font-style: normal;
+font-weight: normal;
+font-size: 32px;
+line-height: 38px;
+/* identical to box height */
+
+
+color: #FFFFFF;
+}
