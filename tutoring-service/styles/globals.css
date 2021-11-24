@@ -39,6 +39,10 @@ a:active {
   color: rgb(8, 73, 95);
 }
 
+.current {
+  color: rgb(8, 73, 95);
+  text-decoration: underline;
+}
 
 a:hover {
   text-decoration: underline;

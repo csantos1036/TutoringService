@@ -23,7 +23,7 @@ export default function Tutor() {
                         </Link>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
                         <Link href="tutor">
-                            <a>Tutor</a>
+                            <a class="current">Tutor</a>
                         </Link>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         <Link href="notifications">
@@ -34,10 +34,12 @@ export default function Tutor() {
                 
                 <h1>Tutor</h1>
 
-                <p> Name: </p>
+                <p> Status: </p>
                 <p> Subject Stengths: </p>
-                <p> Subject Needs: </p>
                 <p> Preferred Method of Tutoring: </p>
+
+                <button type="button">Request Student</button>
+                <button type="button">View Matches</button>
         </Layout>
         </>
       )

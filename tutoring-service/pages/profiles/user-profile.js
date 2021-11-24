@@ -15,7 +15,7 @@ export default function UserProfile() {
             <div class="rectangle">
                 <h2>
                     <Link href="user-profile">
-                        <a>User Profile</a>
+                        <a class="current">User Profile</a>
                     </Link>
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     <Link href="student">
@@ -32,8 +32,14 @@ export default function UserProfile() {
                 </h2>
             </div>
             
-            <h1>User Profile</h1>
+            <h1>
+                User Profile 
+            </h1>
 
+            <h3>
+            Point Balance:
+            </h3>
+            
             <p> Name: </p>
             <p> Subject Stengths: </p>
             <p> Subject Needs: </p>

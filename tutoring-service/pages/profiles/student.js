@@ -19,7 +19,7 @@ export default function Student() {
                         </Link>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         <Link href="student">
-                            <a class ="active">Student</a>
+                            <a class ="current">Student</a>
                         </Link>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
                         <Link href="tutor">
@@ -34,10 +34,13 @@ export default function Student() {
                 
                 <h1>Student</h1>
 
-                <p> Name: </p>
+                <p> Status: </p>
                 <p> Subject Stengths: </p>
-                <p> Subject Needs: </p>
                 <p> Preferred Method of Tutoring: </p>
+
+                <button type="button">Request Tutor</button>
+                <button type="button">View Matches</button>
+                <button type="button">Review Session</button>
             </Layout>
         </>
       )

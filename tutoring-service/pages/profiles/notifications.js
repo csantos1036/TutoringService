@@ -27,7 +27,7 @@ export default function Notifcations() {
                         </Link>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         <Link href="notifications">
-                            <a> Notifications</a>
+                            <a class="current"> Notifications</a>
                         </Link>
                     </h2>
                 </div>
