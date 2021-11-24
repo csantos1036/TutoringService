@@ -38,6 +38,12 @@ export default function Notifcations() {
                 <p> Subject Stengths: </p>
                 <p> Subject Needs: </p>
                 <p> Preferred Method of Tutoring: </p>
+
+                <footer>
+                    <Link href="/">
+                            <a>Logout</a>
+                    </Link>
+                </footer>
             </Layout>
         </>
       )

@@ -40,6 +40,12 @@ export default function Tutor() {
 
                 <button type="button">Request Student</button>
                 <button type="button">View Matches</button>
+
+                <footer>
+                    <Link href="/">
+                        <a>Logout</a>
+                    </Link>
+                </footer>
         </Layout>
         </>
       )

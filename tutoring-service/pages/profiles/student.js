@@ -41,6 +41,13 @@ export default function Student() {
                 <button type="button">Request Tutor</button>
                 <button type="button">View Matches</button>
                 <button type="button">Review Session</button>
+
+                <footer>
+                    <Link href="/">
+                            <a>Logout</a>
+                    </Link>
+                </footer>
+
             </Layout>
         </>
       )

@@ -1,9 +1,13 @@
+@font-face {
+  font-family: Effra;
+  src: url("Effra.ttf");
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Effra;
   line-height: 1.6;
   font-size: 14px;
 }
@@ -63,9 +67,11 @@ button {
   width: 500px;
   height: 50px;
   margin-left: 70px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 12px;
+  margin-bottom: 12px;
   background-color: white;
+  font-family: Effra;
+  font-size: 20px;
 
   border: 1px solid rgb(8, 73, 95);
   box-sizing: border-box;
@@ -75,6 +81,18 @@ button {
 button:hover {
   background-color: rgb(8, 73, 95);
   color: white
+}
+
+.loginButton {
+  align-self: center;
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 20px;
+  font-weight: 400;
+  font-display: bold;
 }
 
 

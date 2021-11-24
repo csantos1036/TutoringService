@@ -11,7 +11,7 @@ export default function UserProfile() {
             </Head>
 
             <h1>Tutoring Service</h1>
-
+            
             <div class="rectangle">
                 <h2>
                     <Link href="user-profile">
@@ -39,7 +39,7 @@ export default function UserProfile() {
             <h3>
             Point Balance:
             </h3>
-            
+
             <p> Name: </p>
             <p> Subject Stengths: </p>
             <p> Subject Needs: </p>
@@ -47,6 +47,14 @@ export default function UserProfile() {
 
             <button type="button">Upload Presentation or Quizzes</button>
             <button type="button">View Study Materials</button>
+
+
+            <footer>
+                <Link href="/">
+                        <a>Logout</a>
+                </Link>
+            </footer>
+            
 
         </Layout>
 

@@ -10,12 +10,11 @@ export default function Home() {
       <>
         <Head>
           <title>Login Page</title>
-          <link rel="icon" href="/favicon.ico" />
         </Head>
         <Layout>
             <div className="login-wrap">
                 <Form className="form-signin">
-                    <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+                    <h1>Login</h1>
                     <FormGroup>
                         <FormLabel>Email</FormLabel>
                         <FormControl type="text" placeholder="useremail@domain.com" className="mr-sm-2" />
@@ -26,9 +25,9 @@ export default function Home() {
                     </FormGroup>
                     <Link href="profiles/user-profile">
                       <a>
-                        <Button className="btn-lg btn-block" variant="primary">
+                        <button class="loginButton" variant="primary">
                           Sign In
-                        </Button>
+                        </button>
                       </a>
                     </Link>
                 </Form>

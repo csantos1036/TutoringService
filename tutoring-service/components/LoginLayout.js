@@ -9,8 +9,8 @@ const layoutStyle = {
 const contentStyle = {
 };
 
-const Layout = props => (
-  <div className="Layout" style={layoutStyle}>
+const LoginLayout = props => (
+  <div className="LoginLayout" style={layoutStyle}>
     <Header />
     <Container className="Content container" style={contentStyle}>
       {props.children}
@@ -19,4 +19,4 @@ const Layout = props => (
   </div>
 );
 
-export default Layout;
+export default LoginLayout;
