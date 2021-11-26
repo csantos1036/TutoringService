@@ -7,10 +7,10 @@ app.use(cors());
 app.use(express.json())
 
 const db = mysql.createConnection({
-  user: 'root',
-  host: 'localhost',
-  password: 'password',
-  database: 'tutoringservicedb'
+  user: 'pD5hLeicAv',
+  host: 'www.remotemysql.com',
+  password: 'sOVR1FnShz',
+  database: 'pD5hLeicAv'
 });
 
 app.post('/login', (request, response) => {
