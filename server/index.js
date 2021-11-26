@@ -17,8 +17,8 @@ app.post('/login', (request, response) => {
   const email = request.body.loginEmail
   const password = request.body.loginPassword
 
-  function sendLoginResponse(result) {
-    if (result.length !== 0) {
+  function sendLoginResponse(result, password) {
+    if (result.length !== 0 && result[0].password === password) {
       response.send('valid');
     } else {
       response.send('invalid');
@@ -31,7 +31,7 @@ app.post('/login', (request, response) => {
       if (error) {
         console.log(error);
       } else {
-        sendLoginResponse(result);
+        sendLoginResponse(result, password);
       }
     })
 });
