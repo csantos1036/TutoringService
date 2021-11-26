@@ -17,12 +17,16 @@ app.post('/login', (request, response) => {
   const email = request.body.loginEmail
   const password = request.body.loginPassword
 
-  function sendLoginResponse(result, password) {
+  function sendLoginResponse(isValidPassword) {
+    response.send(isValidPassword);
+  }
+
+  function verifyPassword(result, password) {
+    res = 'invalid'
     if (result.length !== 0 && result[0].password === password) {
-      response.send('valid');
-    } else {
-      response.send('invalid');
+      res = 'valid'
     }
+    return res;
   }
 
   db.query('SELECT password FROM user WHERE email=?',
@@ -31,7 +35,8 @@ app.post('/login', (request, response) => {
       if (error) {
         console.log(error);
       } else {
-        sendLoginResponse(result, password);
+        isValidPassword = verifyPassword(result, password)
+        sendLoginResponse(isValidPassword);
       }
     })
 });
