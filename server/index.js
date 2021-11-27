@@ -24,12 +24,12 @@ app.post('/login', (request, response) => {
   function verifyPassword(result, password) {
     res = 'invalid'
     if (result.length !== 0 && result[0].password === password) {
-      res = 'valid'
+      res = ['valid', result[0].userId]
     }
     return res;
   }
 
-  db.query('SELECT password FROM user WHERE email=?',
+  db.query('SELECT * FROM user WHERE email=?',
     [email],
     (error, result) => {
       if (error) {
@@ -37,6 +37,63 @@ app.post('/login', (request, response) => {
       } else {
         isValidPassword = verifyPassword(result, password)
         sendLoginResponse(isValidPassword);
+      }
+    })
+});
+
+app.post('/userprofile', (request, response) => {
+  const userId = 1 // request.body.userId
+
+  function sendUserProfile(validResponse) {
+    response.send(validResponse)
+  }
+
+  function verifyResponse(result) {
+    res = ['invalid']
+    if (result.length !== 0) {
+      res = ['valid', result[0]]
+    }
+    return res;
+  }
+
+  db.query('SELECT * FROM user WHERE userId=?',
+    [userId],
+    (error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        validResponse = verifyResponse(result)
+        sendUserProfile(validResponse);
+      }
+    })
+});
+
+app.post('/subjectstrength', (request, response) => {
+  const userId = 1 // request.body.userId
+
+  function sendSubjectStrengths(validResponse) {
+    response.send(validResponse)
+  }
+
+  function verifyResponse(result) {
+    res = ['invalid']
+    if (result.length !== 0) {
+      listOfSubjects = []
+      result.forEach((x, i) => listOfSubjects.push(result[i].subject))
+      res = ['valid', listOfSubjects]
+    }
+    return res;
+  }
+
+  db.query('SELECT subject FROM subject_strength WHERE userId=?',
+    [userId],
+    (error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        validResponse = verifyResponse(result)
+        console.log(validResponse)
+        sendSubjectStrengths(validResponse);
       }
     })
 });
