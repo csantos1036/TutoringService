@@ -4,7 +4,6 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '../components/layout'
 import { Form, FormControl, Button, FormLabel, FormGroup } from 'react-bootstrap'
-import { useHistory } from 'react-router-dom';
 import Axios from 'axios'
 
 export default function Home() {

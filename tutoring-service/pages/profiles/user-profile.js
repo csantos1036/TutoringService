@@ -1,8 +1,15 @@
+import React, { useState } from "react";
 import Link from 'next/link'
 import Head from 'next/head'
 import Layout from '../../components/layout'
 
 export default function UserProfile() {
+  const [points, setPoints] = useState(0)
+  const [name, setName] = useState('')
+  const [subjectStrengths, setSubjectStrengths] = useState([])
+  const [subjectNeeds, setSubjectNeeds] = useState([])
+  const [methodOfTutoring, setMethodOfTutoring] = useState('')
+
   return (
     <>
         <Layout>
