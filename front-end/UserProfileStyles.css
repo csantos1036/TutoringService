@@ -1,0 +1,134 @@
+/* Use accross multiple docs*/
+
+@font-face {
+    font-family: Effra;
+    src: url("Effra.ttf");
+ }
+
+ .ul {
+  
+  list-style-type: none;
+  width: 783px;
+  height: 67px;
+  margin-left: 607px;
+  top: 22px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 15px;
+  
+}
+
+.li {
+  float: left;
+}
+
+.li a {
+  font-family: Effra;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  display: block;
+  color: #5A6E81;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+
+header{
+  position: absolute;
+width: 319px;
+height: 76px;
+left: 56px;
+top: 104px;
+
+font-family: Effra;
+font-style: normal;
+font-weight: normal;
+font-size: 64px;
+line-height: 76px;
+/* identical to box height */
+color: #5A6E81;
+}
+
+/* end here*/
+.text_2{
+    
+  font-family: Effra;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  color: #5A6E81;
+  line-height:30px;
+  margin-left:86px;
+  margin-top:125px;
+  
+  
+  
+  }
+  .uploadButton{
+    margin-left:85px;
+    font-family: Effra;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 57px;
+    color: #5A6E81;
+    width: 700px;
+    height: 91px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 15px;
+    background-color:white;
+    text-align: left;
+    padding-left:30px;
+    
+    }
+    .materialButton{
+        margin-left:85px;
+        font-family: Effra;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 48px;
+        line-height: 57px;
+        color: #5A6E81;
+        width: 700px;
+        height: 91px;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 15px;
+        background-color:white;
+        text-align: left;
+        padding-left:30px;
+        
+        }
+.move{
+  position: absolute;
+ left:310px;
+ top: 295px;
+}
+ .move_2{
+  position: absolute;
+  left:360px;
+  top:230px;
+} 
+
+
+
+
+.logOut{
+  position: absolute;
+  font-family: Effra;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  color: #5A6E81;
+  line-height:30px;
+  margin-left:86px;
+  top: 630px; 
+  text-decoration: none;
+
+}

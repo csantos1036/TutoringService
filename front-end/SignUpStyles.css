@@ -1,0 +1,186 @@
+@font-face {
+    font-family: Effra;
+    src: url("Effra.ttf");
+ }
+ header{
+    position: absolute;
+    width: 212px;
+    height: 76px;
+    left: 590px;
+    top: 85px;
+    
+    font-family: Effra;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 64px;
+    line-height: 76px;
+    /* identical to box height */
+    
+    
+    color: #5A6E81;
+ }
+ form{
+    margin-left: 400px;
+    font-family: Effra;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 43px;
+    color: #5A6E81;
+    margin-bottom:0px;
+    }
+    h1{
+        position: absolute;
+width: 85px;
+height: 43px;
+left: 400px;
+top: 190px;
+
+font-family: Effra;
+font-style: normal;
+font-weight: normal;
+font-size: 36px;
+line-height: 43px;
+/* identical to box height */
+
+
+color: #5A6E81;
+
+    }
+    .textBox{
+        position: absolute;
+        width: 594px;
+        height: 66px;
+        left: 400px;
+        top: 260px;
+        
+        
+border: 1px solid #000000;
+box-sizing: border-box;
+border-radius: 15px;
+font-family: Effra;
+font-style: normal;
+font-weight: normal;
+font-size: 36px;
+line-height: 43px;
+}
+.pass{
+    position: absolute;
+width: 149px;
+height: 43px;
+left: 400px;
+top: 300px;
+margin-top:50px;
+font-family: Effra;
+font-style: normal;
+font-weight: normal;
+font-size: 36px;
+line-height: 43px;
+}
+.textBox_2{
+    position: absolute;
+width: 594px;
+height: 66px;
+left: 400px;
+top: 400px;
+
+border: 1px solid #000000;
+box-sizing: border-box;
+border-radius: 15px;
+font-family: Effra;
+font-style: normal;
+font-weight: normal;
+font-size: 36px;
+line-height: 43px;
+}
+.verify{
+    position: absolute;
+width: 246px;
+height: 43px;
+left: 400px;
+top: 490px;
+
+font-family: Effra;
+font-style: normal;
+font-weight: normal;
+font-size: 36px;
+line-height: 43px;
+/* identical to box height */
+
+
+color: #5A6E81;
+
+}
+.textBox_3{
+    position: absolute;
+width: 594px;
+height: 66px;
+left: 400px;
+top: 540px;
+
+border: 1px solid #000000;
+box-sizing: border-box;
+border-radius: 15px;
+font-family: Effra;
+font-style: normal;
+font-weight: normal;
+font-size: 36px;
+line-height: 43px;
+}
+.fullName{
+    position: absolute;
+width: 152px;
+height: 43px;
+left: 400px;
+top: 630px;
+
+font-family: Effra;
+font-style: normal;
+font-weight: normal;
+font-size: 36px;
+line-height: 43px;
+/* identical to box height */
+
+
+color: #5A6E81;
+}
+.textBox_4{
+    position: absolute;
+width: 594px;
+height: 66px;
+left: 400px;
+top: 683px;
+
+border: 1px solid #000000;
+box-sizing: border-box;
+border-radius: 15px;
+
+font-family: Effra;
+font-style: normal;
+font-weight: normal;
+font-size: 36px;
+line-height: 43px;
+}
+.submitBox{
+
+    position: absolute;
+width: 340px;
+height: 54px;
+left: 523px;
+top: 804px;
+
+background: #24517A;
+border: 1px solid #24517A;
+box-sizing: border-box;
+border-radius: 30px;
+font-family: Effra;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 38px;
+    /* identical to box height */
+    text-decoration: none;
+    
+    color: white;
+    text-align: center;
+}

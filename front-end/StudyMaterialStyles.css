@@ -1,0 +1,81 @@
+/* Use accross multiple docs*/
+
+@font-face {
+    font-family: Effra;
+    src: url("Effra.ttf");
+ }
+
+
+ .ul {
+     position: absolute;
+    list-style-type: none;
+    width: 783px;
+    height: 67px;
+    margin-left: 607px;
+    top: -5px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 15px;
+    
+  }
+  
+  .li {
+    float: left;
+  }
+  
+  .li a {
+    font-family: Effra;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 43px;
+    display: block;
+    color: #5A6E81;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+
+header{
+  position: absolute;
+
+  
+  height: 76px;
+  left: 56px;
+  top: 104px;
+
+font-family: Effra;
+font-style: normal;
+font-weight: normal;
+font-size: 64px;
+line-height: 76px;
+/* identical to box height */
+color: #5A6E81;
+}
+.display_area{
+position: absolute;
+width: 90%;
+height: 600px;
+left: 76px;
+top: 213px;
+
+box-sizing: border-box;
+
+margin: auto; 
+font-family: Effra;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 36px;
+/* identical to box height */
+
+
+color: #5A6E81;
+
+
+}
+.text_align{
+    padding: 20px 0px 10px 10px;
+}
+/* end here*/

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="UserProfileStyles.css" />
+</head>
+<body>
+   
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" integrity="sha512-mR/b5Y7FRsKqrYZou7uysnOdCIJib/7r5QeJMFvLNHNhtye3xJp1TdJVPLtetkukFn227nKpXD9OjUc09lx97Q==" crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+     
+     
+     
+      <div style = "padding-top:10px;">
+        <ul class="ul">
+            <li class="li"><a href="UserProfile.html">User Profile</a></li>
+            <li class="li"><a href="#student" style = "color: #ADB1B6;">Student</a></li>
+            <li class="li"><a href="#tutor" style = "color: #ADB1B6;">Tutor</a></li>
+            <li class="li"><a href="#Notifications" style = "color: #ADB1B6;">Notifications</a></li>
+          </ul>
+
+      </div>
+      <header>User Profile</header>
+      <div class = "text_2">
+          <!-- Display Name -->
+        <p id="display_name"style = "padding: 10px 10px 10px 0px;">Name:</p>
+          <p style = "padding: 10px 10px 10px 0px;">Subject Strengths:</p>
+          <p style = "padding: 10px 10px 10px 0px;">Subject Needs: </p>
+          
+      </div>
+  
+      <input type=button onClick="parent.location='Upload.html'" class = "uploadButton" value = "Upload Presentation/Quiz">
+  
+      <div style = "padding-top:20px">
+          <input type=button onClick="parent.location='StudyMaterial.html'" class = "materialButton" value = "View Study Materials">
+      </div>
+  <!-- Subject Strength -->
+     <div class="move">
+        <div class="container mt-5">
+            <select class="selectpicker"  multiple aria-label="size 3 select example" style = "color: #5A6E81;">
+                <option style = "color: #5A6E81;">Trigonometry</option>
+                <option style = "color: #5A6E81;">Pre-calculus</option>
+                <option style = "color: #5A6E81;">Algebra</option>
+                <option style = "color: #5A6E81;">Statistics</option>
+                <option style = "color: #5A6E81;">Linear Algebra</option>
+                <option style = "color: #5A6E81;">Health Sciences</option>
+                <option style = "color: #5A6E81;">Chemistry</option>
+                <option style = "color: #5A6E81;">Biology</option>
+            </select>
+          
+          </div>
+     </div>
+   <!-- Subject Needs -->
+      <div class = "move_2">
+        <div class="container mt-5">
+            <select class="selectpicker"  multiple aria-label="size 3 select example" style = "color: #5A6E81;">
+                <option style = "color: #5A6E81;">Trigonometry</option>
+                <option style = "color: #5A6E81;">Pre-calculus</option>
+                <option style = "color: #5A6E81;">Algebra</option>
+                <option style = "color: #5A6E81;">Statistics</option>
+                <option style = "color: #5A6E81;">Linear Algebra</option>
+                <option style = "color: #5A6E81;">Health Sciences</option>
+                <option style = "color: #5A6E81;">Chemistry</option>
+                <option style = "color: #5A6E81;">Biology</option>
+            </select>
+          
+          </div>
+      </div>
+      
+     
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js" integrity="sha512-FHZVRMUW9FsXobt+ONiix6Z0tIkxvQfxtCSirkKc5Sb4TKHmqq1dZa8DphF0XqKb3ldLu/wgMa8mT6uXiLlRlw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+</body>
+<!-- Log Out-->
+<div class = "logOut">
+    <a href="login.html" style = "text-decoration: none; color: #5A6E81;">Log Out</a>
+</div>
+
+
+</html>
