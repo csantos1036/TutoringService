@@ -10,12 +10,16 @@ export default function Upload() {
     const acceptableFiles = ['docx', 'pdf', 'ppt', 'pptx', 'txt']
     const awardedPoints = 2
 
+
     const upload = (event) => {
         event.preventDefault()
         event.target[0].value = ''
+        const selectedSubject = event.target[1].value
+        event.target[1].value = "Trigonometry"
         let data = new FormData()
         data.append('userId', 1) // props.userId
         data.append('points', awardedPoints)
+        data.append('subject', selectedSubject)
         data.append('file', myfile)
         Axios.post('http://localhost:3001/upload', data, {
             headers: {
@@ -70,6 +74,37 @@ export default function Upload() {
                     <Form onSubmit={upload}>
                         <label htmlFor="myfile">Select a file:</label>
                         <input onChange={verifyFile} type="file" id="myfile" name="myfile" required/>
+                        <br/>
+                        <label> Subject:
+                            <br/>
+                            <select>
+                                <option value="Trigonometry" selected>
+                                    Trigonometry
+                                </option>
+                                <option value="Pre-calculus">
+                                    Pre-calculus
+                                </option>
+                                <option value="Algebra">
+                                    Algebra
+                                </option>
+                                <option value="Linear Algebra">
+                                    Linear Algebra
+                                </option>
+                                <option value="Health Sciences">
+                                    Health Sciences
+                                </option>
+                                <option value="Statistics">
+                                    Statistics
+                                </option>
+                                <option value="Chemistry">
+                                    Chemistry
+                                </option>
+                                <option value="Biology">
+                                    Biology
+                                </option>
+                            </select>
+                            <br/>
+                        </label>
                         <button type='submit' className="loginButton" variant="primary">
                             Submit 
                         </button>
