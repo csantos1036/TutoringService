@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import Link from 'next/link'
 import Head from 'next/head'
 import Layout from '../../components/layout'
+import { Form, FormControl, Button, FormLabel, FormGroup } from 'react-bootstrap'
 import Axios from 'axios'
 
-export default function UserForm() {
+export default function UserProfile() {
   const [points, setPoints] = useState(0)
   const [name, setName] = useState('')
   const [method, setMethod] = useState('')
@@ -80,10 +81,20 @@ export default function UserForm() {
 
             <p> Name: { name } </p>
 
-
             <div class = "left">
-            <form onSubmit={handleSubmit}>
-                <label> Subject Stengths:
+            <Form>
+                <FormGroup>
+                    <FormLabel>Subject Strengths:</FormLabel>
+                    <FormControl type="text"
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <FormLabel>Subject Needs:</FormLabel>
+                    <FormControl type="text"
+                    />
+                </FormGroup>
+
+                {/* <label> Subject Needs: 
                     <select 
                         multiple={true}
                     >
@@ -97,34 +108,18 @@ export default function UserForm() {
                         <option value="6">Chemistry</option>
                         <option value="7">Biology</option>
                     </select>
-                </label>
-                <div></div>
-                <label> Subject Needs: 
-                    <select 
-                        multiple={true}
-                    >
-                        <option value = "-1" selected>[select]</option>
-                        <option value="0">Trigonometry</option>
-                        <option value="1">Pre-calculus</option>
-                        <option value="2">Algebra</option>
-                        <option value="3">Linear Algebra</option>
-                        <option value="4">Health Sciences</option>
-                        <option value="5">Statistics</option>
-                        <option value="6">Chemistry</option>
-                        <option value="7">Biology</option>
-                    </select>
-                </label>
-                <div></div>
-                <label> Preferred Method of Tutoring: 
+            
+                </label> */}
+                
+                <FormGroup>
+                    <FormLabel>Preferred Method of Tutoring:</FormLabel> 
                     <select name = "Subject Stengths">
                                 <option value = "-1" selected>[select]</option>
                                 <option value="0">Online</option>
                                 <option value="1">Face to Face</option>
                     </select>
-                </label>
-                <div></div>
-                <input type="submit" value="Submit" />
-            </form>
+                </FormGroup>
+            </Form>
             </div>
 
             <Link href="../requests/upload">
@@ -142,8 +137,6 @@ export default function UserForm() {
                         </button>
                       </a>
             </Link>
-
-
             <footer>
                 <Link href="/">
                         <a>Logout</a>

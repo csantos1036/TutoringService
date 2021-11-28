@@ -4,25 +4,7 @@ import Layout from '../../components/layout'
 import { Form, FormControl, Button, FormLabel, FormGroup } from 'react-bootstrap'
 import React, { Component } from "react";
 
-class MatchForm extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {value: ''};
-  
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
-  
-    handleChange(event) {
-      this.setState({value: event.target.value});
-    }
-  
-    handleSubmit(event) {
-      alert('Match confirmed');
-      event.preventDefault();
-    }
-
-    render() {
+export default function ViewMatches() {
         return (
             <>
                 <Layout>
@@ -51,28 +33,16 @@ class MatchForm extends Component {
                     <h1>View Matches</h1>
 
                     <div class = "dropdownLabel">
-                    <form onSubmit={this.handleSubmit}>
+                    <form>
                         <label> Confirmed Matches:
-                            <select 
-                                multiple={true}
-                            >
+                            <select >
                                 <option value = "-1" selected>[select]</option>
-                                <option value="0">Trigonometry</option>
-                                <option value="1">Pre-calculus</option>
-                                <option value="2">Algebra</option>
-                                <option value="3">Linear Algebra</option>
-                                <option value="4">Health Sciences</option>
-                                <option value="5">Statistics</option>
-                                <option value="6">Chemistry</option>
-                                <option value="7">Biology</option>
+                                <option value="0">Tutor #1 - Chemistry</option>
+                                <option value="1">Tutor #2 - Math</option>
                             </select>
                         </label>
                     </form>
                     </div>
-                    
-                    <button class="loginButton" variant="primary">
-                        Submit 
-                    </button>
 
                     <h1>Tutor Info:</h1>
 
@@ -90,7 +60,4 @@ class MatchForm extends Component {
                 </Layout>
             </>
         )
-    }
 }
-
-export default MatchForm;
