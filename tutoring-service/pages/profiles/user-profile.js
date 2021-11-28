@@ -46,6 +46,13 @@ export default function UserProfile() {
 
   const handleSubmit = () => {}
 
+  const isSelectedMethod = (refMethod) => {
+      if (refMethod === method) {
+          return true;
+      }
+      return false;
+  }
+
   return (
     <>
         <Layout>
@@ -114,9 +121,8 @@ export default function UserProfile() {
                 <FormGroup>
                     <FormLabel>Preferred Method of Tutoring:</FormLabel> 
                     <select name = "Subject Stengths">
-                                <option value = "-1" selected>[select]</option>
-                                <option value="0">Online</option>
-                                <option value="1">Face to Face</option>
+                                <option value="0" selected={isSelectedMethod('Online')}>Online</option>
+                                <option value="1" selected={isSelectedMethod('Face to Face')}>Face to Face</option>
                     </select>
                 </FormGroup>
             </Form>
