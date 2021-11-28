@@ -7,23 +7,28 @@ import Axios from 'axios'
 
 export default function Upload() {
     const [myfile, setFile] = useState(null)
+    const acceptableFiles = ['docx', 'pdf', 'ppt', 'pptx', 'txt']
+    const awardedPoints = 2
 
     const upload = (event) => {
         event.preventDefault()
+        event.target[0].value = ''
         let data = new FormData()
-        data.append('userId', 1)
+        data.append('userId', 1) // props.userId
+        data.append('points', awardedPoints)
         data.append('file', myfile)
         Axios.post('http://localhost:3001/upload', data, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         }).then((response) => {})
+        alert('Form uploaded!')
     }
 
     const verifyFile = (event) => {
         const splitFileName = event.target.value.split('.');
-        if (splitFileName.length !== 2 || splitFileName[1] !== 'pdf') {
-            alert('Please upload file in pdf format')
+        if (splitFileName.length !== 2 || !acceptableFiles.includes(splitFileName[1].toLowerCase())) {
+            alert('Please upload file in acceptable format')
             event.target.value = ''
         } else {
             setFile(event.target.files[0])

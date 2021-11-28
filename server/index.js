@@ -145,6 +145,9 @@ app.post('/subjectneed', (request, response) => {
 });
 
 app.post('/upload', (request, response) => {
+  const userId = request.body.userId;
+  const points = parseInt(request.body.points);
+  let userPoints = 0;
   let file;
   let uploadPath;
 
@@ -156,6 +159,25 @@ app.post('/upload', (request, response) => {
   uploadPath = __dirname + '/upload/' + file.name
   file.mv(uploadPath)
 
+  db.query('SELECT points FROM user WHERE userId=?',
+    [userId],
+    (error, result) => {
+      if (error) {
+        console.log(error)
+      } else {
+        userPoints = parseInt(result[0].points);
+        newUserPoints = points + userPoints
+
+        db.query('UPDATE user SET points=? WHERE userId=?',
+          [newUserPoints, userId],
+          (error, result) => {
+            if (error) {
+              console.log(error);
+            }
+        });
+      }
+    }
+  )
 });
 
 app.listen(3001, ()=>{});
