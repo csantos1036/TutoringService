@@ -1,27 +1,9 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import Layout from '../../components/layout'
-import React, { Component } from "react";
+import { Form, FormControl, Button, FormLabel, FormGroup } from 'react-bootstrap'
 
-class UserForm extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {value: ''};
-  
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
-  
-    handleChange(event) {
-      this.setState({value: event.target.value});
-    }
-  
-    handleSubmit(event) {
-      alert('User Profile Updated');
-      event.preventDefault();
-    }
-
-render() {
+export default function UserProfile() {
   return (
     <>
         <Layout>
@@ -57,10 +39,20 @@ render() {
 
             <p> Name: </p>
 
-
             <div class = "left">
-            <form onSubmit={this.handleSubmit}>
-                <label> Subject Stengths:
+            <Form>
+                <FormGroup>
+                    <FormLabel>Subject Strengths:</FormLabel>
+                    <FormControl type="text"
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <FormLabel>Subject Needs:</FormLabel>
+                    <FormControl type="text"
+                    />
+                </FormGroup>
+
+                {/* <label> Subject Needs: 
                     <select 
                         multiple={true}
                     >
@@ -74,34 +66,18 @@ render() {
                         <option value="6">Chemistry</option>
                         <option value="7">Biology</option>
                     </select>
-                </label>
-                <div></div>
-                <label> Subject Needs: 
-                    <select 
-                        multiple={true}
-                    >
-                        <option value = "-1" selected>[select]</option>
-                        <option value="0">Trigonometry</option>
-                        <option value="1">Pre-calculus</option>
-                        <option value="2">Algebra</option>
-                        <option value="3">Linear Algebra</option>
-                        <option value="4">Health Sciences</option>
-                        <option value="5">Statistics</option>
-                        <option value="6">Chemistry</option>
-                        <option value="7">Biology</option>
-                    </select>
-                </label>
-                <div></div>
-                <label> Preferred Method of Tutoring: 
+            
+                </label> */}
+                
+                <FormGroup>
+                    <FormLabel>Preferred Method of Tutoring:</FormLabel> 
                     <select name = "Subject Stengths">
                                 <option value = "-1" selected>[select]</option>
                                 <option value="0">Online</option>
                                 <option value="1">Face to Face</option>
                     </select>
-                </label>
-                <div></div>
-                <input type="submit" value="Submit" />
-            </form>
+                </FormGroup>
+            </Form>
             </div>
 
             <Link href="../requests/upload">
@@ -119,8 +95,6 @@ render() {
                         </button>
                       </a>
             </Link>
-
-
             <footer>
                 <Link href="/">
                         <a>Logout</a>
@@ -133,6 +107,4 @@ render() {
     </>
   )
 }
-}
 
-export default UserForm;

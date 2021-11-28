@@ -4,25 +4,7 @@ import Layout from '../../components/layout'
 import { Form, FormControl, Button, FormLabel, FormGroup } from 'react-bootstrap'
 import React, { Component } from "react";
 
-class StudentMatchForm extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {value: ''};
-  
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
-  
-    handleChange(event) {
-      this.setState({value: event.target.value});
-    }
-  
-    handleSubmit(event) {
-      alert('Match confirmed');
-      event.preventDefault();
-    }
-
-    render() {
+export default function ViewMatches() {
         return (
             <>
                 <Layout>
@@ -39,40 +21,28 @@ class StudentMatchForm extends Component {
                             </Link>
                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                             <Link href="../profiles/student">
-                                <a class ="current">Student</a>
+                                <a>Student</a>
                             </Link>
                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
                             <Link href="../profiles/tutor">
-                                <a>Tutor</a>
+                                <a class ="current">Tutor</a>
                             </Link>
                         </h2>
                     </div>
                     
-                    <h1>View Student Matches</h1>
+                    <h1>View Matches</h1>
 
                     <div class = "dropdownLabel">
-                    <form onSubmit={this.handleSubmit}>
+                    <form>
                         <label> Confirmed Matches:
-                            <select 
-                                multiple={true}
-                            >
+                            <select >
                                 <option value = "-1" selected>[select]</option>
-                                <option value="0">Trigonometry</option>
-                                <option value="1">Pre-calculus</option>
-                                <option value="2">Algebra</option>
-                                <option value="3">Linear Algebra</option>
-                                <option value="4">Health Sciences</option>
-                                <option value="5">Statistics</option>
-                                <option value="6">Chemistry</option>
-                                <option value="7">Biology</option>
+                                <option value="0">Student #1 - Chemistry</option>
+                                <option value="1">Student #2 - Math</option>
                             </select>
                         </label>
                     </form>
                     </div>
-                    
-                    <button class="loginButton" variant="primary">
-                        Submit 
-                    </button>
 
                     <h1>Student Info:</h1>
 
@@ -90,7 +60,4 @@ class StudentMatchForm extends Component {
                 </Layout>
             </>
         )
-    }
 }
-
-export default StudentMatchForm;

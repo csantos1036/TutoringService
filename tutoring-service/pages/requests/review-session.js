@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import Layout from '../../components/layout'
-import { Form, FormControl, Button, FormLabel, FormGroup } from 'react-bootstrap'
+import { Form, FormControl, Button, FormLabel, FormGroup, Dropdown } from 'react-bootstrap'
 
 export default function ReviewSession() {
     return (
@@ -31,13 +31,37 @@ export default function ReviewSession() {
                 
                 <h1>Review Session</h1>
 
-                <h2>Redeem Points: </h2>
-
-                
-                <button class="loginButton" variant="primary">
-                    Submit 
-                </button>
-
+                <div class = "center">
+                    <Form>
+                        <FormGroup>
+                            <FormLabel> Tutors: </FormLabel>
+                                <select >
+                                    <option value = "-1" selected>[select]</option>
+                                    <option value="0">Tutor #1 - Chemistry</option>
+                                    <option value="1">Tutor #2 - Math</option>
+                                </select>
+                        </FormGroup>
+                        <FormGroup>
+                            <FormLabel>
+                                Rate from 1 (Not Helpful) to 5 (Very Helpful):
+                            </FormLabel>
+                            <FormControl type="text"/>
+                        </FormGroup>
+                        <FormGroup>
+                            <FormLabel>
+                                Additional Comments: 
+                            </FormLabel>
+                            <FormControl type="text"/>
+                        </FormGroup>
+                        <Link href="../profiles/student">
+                            <a>
+                                <Button className="loginButton" variant="primary">
+                                    Submit
+                                </Button>
+                            </a>
+                        </Link>
+                    </Form>
+                </div>
 
                 <footer>
                     <Link href="/">

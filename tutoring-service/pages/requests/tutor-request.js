@@ -1,55 +1,74 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import Layout from '../../components/layout'
-import { Form, FormControl, Button, FormLabel, FormGroup } from 'react-bootstrap'
+import React, { Component, Redirect } from "react";
 
-export default function TutorRequest() {
-    return (
-        <>
-            <Layout>
-                <Head>
-                    <title>Tutor Request</title>
-                </Head>
+class TutorRequest extends Component {
 
-                <h1>Tutoring Service</h1>
+    constructor(props) {
+        super(props);
+        this.state = {value: ''};
+    
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+      }
+    
+      handleChange(event) {
+        this.setState({value: event.target.value});
+      }
+    
+      handleSubmit(event) {
+        alert('Request Sent');
+        event.preventDefault();
+      }
+    
+    render() {
+        return (
+            <>
+                <Layout>
+                    <Head>
+                        <title>Tutor Request</title>
+                    </Head>
 
-                <div class="rectangle">
-                    <h2>
-                        <Link href="../profiles/user-profile">
-                            <a>User Profile</a>
-                        </Link>
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                        <Link href="../profiles/student">
-                            <a class ="current">Student</a>
-                        </Link>
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-                        <Link href="../profiles/tutor">
-                            <a>Tutor</a>
-                        </Link>
-                    </h2>
-                </div>
-                
-                <h1>Tutor Request</h1>
+                    <h1>Tutoring Service</h1>
 
-                <h2>Redeemable Points: </h2>
+                    <div class="rectangle">
+                        <h2>
+                            <Link href="../profiles/user-profile">
+                                <a>User Profile</a>
+                            </Link>
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            <Link href="../profiles/student">
+                                <a class ="current">Student</a>
+                            </Link>
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                            <Link href="../profiles/tutor">
+                                <a>Tutor</a>
+                            </Link>
+                        </h2>
+                    </div>
+                    
+                    <h1>Tutor Request</h1>
 
-                
-                <Link href="../profiles/student">
-                    <a>
-                        <button class="loginButton" variant="primary">
-                          Submit
+                    <h2>Redeemable Points: </h2>
+
+                    <form>
+                        <button onClick={this.handleSubmit} >
+                            Send a Tutor Request
                         </button>
-                    </a>
-                </Link>
+                    </form>
 
 
-                <footer>
-                    <Link href="/">
-                            <a>Logout</a>
-                    </Link>
-                </footer>
+                    <footer>
+                        <Link href="/">
+                                <a>Logout</a>
+                        </Link>
+                    </footer>
 
-            </Layout>
-        </>
-      )
+                </Layout>
+            </>
+        )
+    }
 }
+
+export default TutorRequest;

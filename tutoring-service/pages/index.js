@@ -4,24 +4,8 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '../components/layout'
 import { Form, FormControl, Button, FormLabel, FormGroup } from 'react-bootstrap'
-import Axios from 'axios'
 
 export default function Home() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('') 
-
-  const login = () => {
-    Axios.post('http://localhost:3000/login', {
-      loginEmail: email,
-      loginPassword: password
-    }).then((response) => {
-      console.log(response)
-      if (response.data === 'valid') {
-        console.log('hey')
-      }
-    })
-  }
-
   return (
       <>
         <Head>
@@ -29,7 +13,7 @@ export default function Home() {
         </Head>
         <Layout>
             <div className="login-wrap">
-                <Form className="form-signin">
+                <Form>
                     <h1 class="signUp">Login</h1>
                     <FormGroup>
                         <FormLabel>
@@ -38,7 +22,6 @@ export default function Home() {
                           </div>
                         </FormLabel>
                         <FormControl type="text"
-                          onChange={(event) => setEmail(event.target.value)}
                           placeholder="useremail@domain.com"
                           className="textBox"
                         />
@@ -50,7 +33,6 @@ export default function Home() {
                             </div>
                           </FormLabel>
                           <FormControl
-                            onChange={(event) => setPassword(event.target.value)}
                             type="password"
                             className="textBox"
                           />
@@ -60,7 +42,7 @@ export default function Home() {
                     </div>
                     <Link href="profiles/user-profile">
                       <a>
-                        <Button onClick={login} className="loginButton" variant="primary">
+                        <Button className="loginButton" variant="primary">
                           Login
                         </Button>
                       </a>
