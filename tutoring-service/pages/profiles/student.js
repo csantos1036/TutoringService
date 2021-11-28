@@ -52,22 +52,32 @@ export default function Student() {
                         <Link href="tutor">
                             <a>Tutor</a>
                         </Link>
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                        <Link href="notifications">
-                            <a> Notifications</a>
-                        </Link>
                     </h2>
                 </div>
-                
+
                 <h1>Student</h1>
 
-                <p> Status: {status} </p>
-                <p> Subject Needs: {subjectNeeds} </p>
-                <p> Preferred Method of Tutoring: </p>
-
-                <button type="button">Request Tutor</button>
-                <button type="button">View Matches</button>
-                <button type="button">Review Session</button>
+                <Link href="../requests/tutor-request">
+                      <a>
+                        <button class="loginButton" variant="primary">
+                            Tutor Request
+                        </button>
+                      </a>
+                </Link>
+                <Link href="../requests/view-matches">
+                      <a>
+                        <button class="loginButton" variant="primary">
+                            View Matches
+                        </button>
+                      </a>
+                </Link>
+                <Link href="../requests/review-session">
+                      <a>
+                        <button class="loginButton" variant="primary">
+                            Review Session
+                        </button>
+                      </a>
+                </Link>
 
                 <footer>
                     <Link href="/">

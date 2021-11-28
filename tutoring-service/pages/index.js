@@ -31,29 +31,45 @@ export default function Home() {
         <Layout>
             <div className="login-wrap">
                 <Form className="form-signin">
-                    <h1>Login</h1>
+                    <h1 class="signUp">Login</h1>
                     <FormGroup>
-                        <FormLabel>Email</FormLabel>
+                        <FormLabel>
+                          <div class="signUpSubForm">
+                            Email
+                          </div>
+                        </FormLabel>
                         <FormControl type="text"
                           onChange={(event) => setEmail(event.target.value)}
                           placeholder="useremail@domain.com"
-                          className="mr-sm-2"
+                          className="textBox"
                         />
                     </FormGroup>
                     <FormGroup>
-                        <FormLabel>Password <Link href="/"><a>Forgot Password?</a></Link></FormLabel>
-                        <FormControl
-                          onChange={(event) => setPassword(event.target.value)}
-                          type="password"
-                          className="mr-sm-2"
-                        />
+                        <FormLabel>
+                          <div class="signUpSubForm">
+                            Password 
+                            </div>
+                          </FormLabel>
+                          <FormControl
+                            onChange={(event) => setPassword(event.target.value)}
+                            type="password"
+                            className="textBox"
+                          />
                     </FormGroup>
+                    <div class = "details">
+                      <Link href="/"><a>Forgot Password?</a></Link>
+                    </div>
                     <Link href="profiles/user-profile">
+                      <a>
                         <Button onClick={login} className="loginButton" variant="primary">
-                          Sign In
+                          Login
                         </Button>
+                      </a>
                     </Link>
                 </Form>
+                <div class ="details">
+                    Don't have an account? Create one <Link href="signup"><a>here</a></Link>.
+                </div>
             </div>
         </Layout>
       </>
