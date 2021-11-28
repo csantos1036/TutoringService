@@ -24,11 +24,7 @@ export default function SignUp() {
       registerEmail: email,
       registerPassword: password1,
       registerName: name
-    }).then((response) => {
-      if (response.data[0] === 'valid') {
-        setUserId(response.data[1])
-      }
-    })
+    }).then((response) => {})
   }
 
   const submit = () => {
@@ -36,7 +32,6 @@ export default function SignUp() {
     if (splitEmailArr.length !== 2 ||
         splitEmailArr[0].length === 0 ||
         !validEmailDomains.includes(splitEmailArr[1])) {
-      console.log(splitEmailArr)
       console.log("Invalid email")
       return;
     } else if (password1.length === 0 || password1 !== password2) {

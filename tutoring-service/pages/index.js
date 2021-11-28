@@ -60,7 +60,7 @@ export default function Home() {
                     </div>
                     <Link href="profiles/user-profile">
                       <a>
-                        <Button className="loginButton" variant="primary">
+                        <Button onClick={login} className="loginButton" variant="primary">
                           Login
                         </Button>
                       </a>
