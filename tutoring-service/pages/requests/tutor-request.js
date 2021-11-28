@@ -1,56 +1,47 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import Layout from '../../components/layout'
+import { Form, FormControl, Button, FormLabel, FormGroup } from 'react-bootstrap'
 
-export default function Student() {
+export default function TutorRequest() {
     return (
         <>
             <Layout>
                 <Head>
-                    <title>Student</title>
+                    <title>Tutor Request</title>
                 </Head>
 
                 <h1>Tutoring Service</h1>
 
                 <div class="rectangle">
                     <h2>
-                        <Link href="user-profile">
+                        <Link href="../profiles/user-profile">
                             <a>User Profile</a>
                         </Link>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                        <Link href="student">
+                        <Link href="../profiles/student">
                             <a class ="current">Student</a>
                         </Link>
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-                        <Link href="tutor">
+                        <Link href="../profiles/tutor">
                             <a>Tutor</a>
                         </Link>
                     </h2>
                 </div>
+                
+                <h1>Tutor Request</h1>
 
-                <h1>Student</h1>
+                <h2>Redeemable Points: </h2>
 
-                <Link href="../requests/tutor-request">
-                      <a>
+                
+                <Link href="../profiles/student">
+                    <a>
                         <button class="loginButton" variant="primary">
-                            Tutor Request
+                          Submit
                         </button>
-                      </a>
+                    </a>
                 </Link>
-                <Link href="../requests/view-matches">
-                      <a>
-                        <button class="loginButton" variant="primary">
-                            View Matches
-                        </button>
-                      </a>
-                </Link>
-                <Link href="../requests/review-session">
-                      <a>
-                        <button class="loginButton" variant="primary">
-                            Review Session
-                        </button>
-                      </a>
-                </Link>
+
 
                 <footer>
                     <Link href="/">

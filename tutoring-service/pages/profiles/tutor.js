@@ -25,21 +25,25 @@ export default function Tutor() {
                         <Link href="tutor">
                             <a class="current">Tutor</a>
                         </Link>
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                        <Link href="notifications">
-                            <a> Notifications</a>
-                        </Link>
                     </h2>
                 </div>
                 
                 <h1>Tutor</h1>
 
-                <p> Status: </p>
-                <p> Subject Stengths: </p>
-                <p> Preferred Method of Tutoring: </p>
-
-                <button type="button">Request Student</button>
-                <button type="button">View Matches</button>
+                <Link href="../requests/student-requests">
+                      <a>
+                        <button class="loginButton" variant="primary">
+                            Student Requests
+                        </button>
+                      </a>
+                </Link>
+                <Link href="../requests/view-student-matches">
+                      <a>
+                        <button class="loginButton" variant="primary">
+                            View Matches
+                        </button>
+                      </a>
+                </Link>
 
                 <footer>
                     <Link href="/">

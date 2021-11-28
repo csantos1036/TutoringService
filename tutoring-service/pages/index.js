@@ -1,11 +1,27 @@
 // File - /pages/index.js
+import React, { useState } from "react";
 import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '../components/layout'
 import { Form, FormControl, Button, FormLabel, FormGroup } from 'react-bootstrap'
-import { useHistory } from "react-router-dom";
+import Axios from 'axios'
 
 export default function Home() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('') 
+
+  const login = () => {
+    Axios.post('http://localhost:3000/login', {
+      loginEmail: email,
+      loginPassword: password
+    }).then((response) => {
+      console.log(response)
+      if (response.data === 'valid') {
+        console.log('hey')
+      }
+    })
+  }
+
   return (
       <>
         <Head>
@@ -14,23 +30,45 @@ export default function Home() {
         <Layout>
             <div className="login-wrap">
                 <Form className="form-signin">
-                    <h1>Login</h1>
+                    <h1 class="signUp">Login</h1>
                     <FormGroup>
-                        <FormLabel>Email</FormLabel>
-                        <FormControl type="text" placeholder="useremail@domain.com" className="mr-sm-2" />
+                        <FormLabel>
+                          <div class="signUpSubForm">
+                            Email
+                          </div>
+                        </FormLabel>
+                        <FormControl type="text"
+                          onChange={(event) => setEmail(event.target.value)}
+                          placeholder="useremail@domain.com"
+                          className="textBox"
+                        />
                     </FormGroup>
                     <FormGroup>
-                        <FormLabel>Password <Link href="/"><a>Forgot Password?</a></Link></FormLabel>
-                        <FormControl type="password" className="mr-sm-2" />
+                        <FormLabel>
+                          <div class="signUpSubForm">
+                            Password 
+                            </div>
+                          </FormLabel>
+                          <FormControl
+                            onChange={(event) => setPassword(event.target.value)}
+                            type="password"
+                            className="textBox"
+                          />
                     </FormGroup>
+                    <div class = "details">
+                      <Link href="/"><a>Forgot Password?</a></Link>
+                    </div>
                     <Link href="profiles/user-profile">
                       <a>
-                        <button class="loginButton" variant="primary">
-                          Sign In
-                        </button>
+                        <Button onClick={login} className="loginButton" variant="primary">
+                          Login
+                        </Button>
                       </a>
                     </Link>
                 </Form>
+                <div class ="details">
+                    Don't have an account? Create one <Link href="signup"><a>here</a></Link>.
+                </div>
             </div>
         </Layout>
       </>

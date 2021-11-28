@@ -5,6 +5,7 @@
 
 html,
 body {
+  text-align: center;
   padding: 0;
   margin: 0;
   font-family: Effra;
@@ -18,6 +19,47 @@ body {
 
 h1 {
   margin-top: 50px;
+  text-align: left;
+}
+
+.signUp{
+  text-align: center;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 64px;
+  line-height: 76px;
+  /* identical to box height */
+
+
+  color: rgb(8, 73, 95);
+}
+
+.signUpSubForm{
+  margin-left: 115px; 
+  text-align: left;
+  font-family: Effra;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  color: rgb(8, 73, 95);
+}
+
+.textBox{
+  width: 594px;
+  height: 66px;
+  margin-bottom: 12px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 15px;
+  font-family: Effra;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 42px;
+  line-height: 57px;
+}
+.details {
+  font-size: 18px;
 }
 
 h2 {
@@ -26,8 +68,13 @@ h2 {
   margin-right: 20px;
 }
 
+h3 {
+  text-align: left;
+}
+
 p {
-  margin-left: 70px;
+  text-align: left;
+  margin-left: 30px;
 }
 
 a {
@@ -57,16 +104,51 @@ img {
   display: block;
 }
 
+.left {
+  text-align: left;
+  margin-left: 30px;
+}
+
+.center {
+  text-align: center;
+}
+
 .rectangle {
   border: 1px solid rgb(8, 73, 95);
   box-sizing: border-box;
   border-radius: 15px;
 }
 
+.dropdownLabel {
+  font-family: Effra;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 43px;
+  text-align: left;
+  margin-left: 30px;
+}
+
+.display_area{
+
+  box-sizing: border-box;
+  
+  font-family: Effra;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 36px;
+  /* identical to box height */
+  
+  
+  color: #5A6E81;
+  
+  
+  }
+
 button {
   width: 500px;
   height: 50px;
-  margin-left: 70px;
   margin-top: 12px;
   margin-bottom: 12px;
   background-color: white;
@@ -83,8 +165,10 @@ button:hover {
   color: white
 }
 
-.loginButton {
-  align-self: center;
+.uploadText{
+  font-size: 42px;
+  margin-top: 20px;
+  color: rgb(8, 73, 95);
 }
 
 footer {
