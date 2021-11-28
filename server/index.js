@@ -42,7 +42,7 @@ app.post('/login', (request, response) => {
 });
 
 app.post('/userprofile', (request, response) => {
-  const userId = 1 // request.body.userId
+  const userId = request.body.userId
 
   function sendUserProfile(validResponse) {
     response.send(validResponse)
@@ -69,7 +69,7 @@ app.post('/userprofile', (request, response) => {
 });
 
 app.post('/subjectstrength', (request, response) => {
-  const userId = 1 // request.body.userId
+  const userId = request.body.userId
 
   function sendSubjectStrengths(validResponse) {
     response.send(validResponse)
@@ -92,8 +92,36 @@ app.post('/subjectstrength', (request, response) => {
         console.log(error);
       } else {
         validResponse = verifyResponse(result)
-        console.log(validResponse)
         sendSubjectStrengths(validResponse);
+      }
+    })
+});
+
+app.post('/subjectneed', (request, response) => {
+  const userId = request.body.userId
+
+  function sendSubjectNeeds(validResponse) {
+    response.send(validResponse)
+  }
+
+  function verifyResponse(result) {
+    res = ['invalid']
+    if (result.length !== 0) {
+      listOfSubjects = []
+      result.forEach((x, i) => listOfSubjects.push(result[i].subject))
+      res = ['valid', listOfSubjects]
+    }
+    return res;
+  }
+
+  db.query('SELECT subject FROM subject_need WHERE userId=?',
+    [userId],
+    (error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        validResponse = verifyResponse(result)
+        sendSubjectNeeds(validResponse);
       }
     })
 });
