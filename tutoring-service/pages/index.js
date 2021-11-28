@@ -8,7 +8,8 @@ import Axios from 'axios'
 
 export default function Home() {
   const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('') 
+  const [password, setPassword] = useState('')
+  const [userId, setUserId] = useState(0)
 
   const login = () => {
     Axios.post('http://localhost:3001/login', {
@@ -16,8 +17,8 @@ export default function Home() {
       loginPassword: password
     }).then((response) => {
       console.log(response)
-      if (response.data === 'valid') {
-        console.log('hey')
+      if (response.data[0] === 'valid') {
+        setUserId(response.data[1])
       }
     })
   }

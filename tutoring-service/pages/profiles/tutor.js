@@ -1,8 +1,35 @@
+import React, { useState, useEffect } from "react";
 import Link from 'next/link'
 import Head from 'next/head'
 import Layout from '../../components/layout'
+import Axios from 'axios'
 
 export default function Tutor() {
+  const [status, setStatus] = useState('')
+  const [subjectStrengths, setSubjectStrengths] = useState([])
+
+  const populateTutor = () => {
+    Axios.post('http://localhost:3001/userprofile', {
+        userId : 1 // props.userId
+    }).then((response) => {
+        if (response.data[0] === 'valid') {
+            setStatus(response.data[1].status)
+        }
+    })
+
+    Axios.post('http://localhost:3001/subjectstrength', {
+        userId : 1 // props.userId
+    }).then((response) => {
+      if (response.data[0] === 'valid') {
+        setSubjectStrengths(response.data[1])
+      }
+    })
+  }
+
+  useEffect(() => {
+    populateTutor()
+  }, [])
+
     return (
         <>
             <Layout>
@@ -34,8 +61,8 @@ export default function Tutor() {
                 
                 <h1>Tutor</h1>
 
-                <p> Status: </p>
-                <p> Subject Stengths: </p>
+                <p> Status: {status} </p>
+                <p> Subject Stengths: {subjectStrengths} </p>
                 <p> Preferred Method of Tutoring: </p>
 
                 <button type="button">Request Student</button>
