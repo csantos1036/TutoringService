@@ -5,31 +5,6 @@ import Layout from '../../components/layout'
 import Axios from 'axios'
 
 export default function Student() {
-  const [status, setStatus] = useState('')
-  const [subjectNeeds, setSubjectNeeds] = useState([])
-
-  const populateStudent = () => {
-    Axios.post('http://localhost:3001/userprofile', {
-        userId : 1 // props.userId
-    }).then((response) => {
-        if (response.data[0] === 'valid') {
-            setStatus(response.data[1].status)
-        }
-    })
-
-    Axios.post('http://localhost:3001/subjectneed', {
-        userId : 1 // props.userId
-    }).then((response) => {
-      if (response.data[0] === 'valid') {
-        setSubjectNeeds(response.data[1])
-      }
-    })
-  }
-
-  useEffect(() => {
-    populateStudent()
-  }, [])
-
     return (
         <>
             <Layout>

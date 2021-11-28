@@ -7,6 +7,7 @@ import Axios from 'axios'
 export default function UserForm() {
   const [points, setPoints] = useState(0)
   const [name, setName] = useState('')
+  const [method, setMethod] = useState('')
   const [subjectStrengths, setSubjectStrengths] = useState([])
   const [subjectNeeds, setSubjectNeeds] = useState([])
 
@@ -17,6 +18,7 @@ export default function UserForm() {
         if (response.data[0] === 'valid') {
             setPoints(response.data[1].points)
             setName(response.data[1].name)
+            setMethod(response.data[1].method)
         }
     })
 
@@ -41,9 +43,7 @@ export default function UserForm() {
     populateUserProfile()
   }, [])
 
-  const handleSubmit = () => {
-      
-  }
+  const handleSubmit = () => {}
 
   return (
     <>
@@ -75,10 +75,10 @@ export default function UserForm() {
             </h1>
             
             <h3>
-                Point Balance: 
+                Point Balance: { points }
             </h3>
 
-            <p> Name: </p>
+            <p> Name: { name } </p>
 
 
             <div class = "left">
