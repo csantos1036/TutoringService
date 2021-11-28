@@ -53,6 +53,14 @@ export default function UserProfile() {
       return false;
   }
 
+  const isSelectedSubjectStrength = (refSubject) => {
+    return subjectStrengths.includes(refSubject);
+  }
+
+  const isSelectedSubjectNeed = (refSubject) => {
+    return subjectNeeds.includes(refSubject);
+  }
+
   return (
     <>
         <Layout>
@@ -90,33 +98,70 @@ export default function UserProfile() {
 
             <div class = "left">
             <Form>
-                <FormGroup>
-                    <FormLabel>Subject Strengths:</FormLabel>
-                    <FormControl type="text"
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <FormLabel>Subject Needs:</FormLabel>
-                    <FormControl type="text"
-                    />
-                </FormGroup>
-
-                {/* <label> Subject Needs: 
+            <label> Subject Strengths:
+                    <br/>
                     <select 
                         multiple={true}
                     >
-                        <option value = "-1" selected>[select]</option>
-                        <option value="0">Trigonometry</option>
-                        <option value="1">Pre-calculus</option>
-                        <option value="2">Algebra</option>
-                        <option value="3">Linear Algebra</option>
-                        <option value="4">Health Sciences</option>
-                        <option value="5">Statistics</option>
-                        <option value="6">Chemistry</option>
-                        <option value="7">Biology</option>
+                        <option value="0" selected={isSelectedSubjectStrength('Trigonometry')}>
+                            Trigonometry
+                        </option>
+                        <option value="1" selected={isSelectedSubjectStrength('Pre-calculus')}>
+                            Pre-calculus
+                        </option>
+                        <option value="2" selected={isSelectedSubjectStrength('Algebra')}>
+                            Algebra
+                        </option>
+                        <option value="3" selected={isSelectedSubjectStrength('Linear Algebra')}>
+                            Linear Algebra
+                        </option>
+                        <option value="4" selected={isSelectedSubjectStrength('Health Sciences')}>
+                            Health Sciences
+                        </option>
+                        <option value="5" selected={isSelectedSubjectStrength('Statistics')}>
+                            Statistics
+                        </option>
+                        <option value="6" selected={isSelectedSubjectStrength('Chemistry')}>
+                            Chemistry
+                        </option>
+                        <option value="7" selected={isSelectedSubjectStrength('Biology')}>
+                            Biology
+                        </option>
                     </select>
-            
-                </label> */}
+                    <br/>
+                </label>
+
+                <label> Subject Needs: 
+                    <br/>
+                    <select 
+                        multiple={true}
+                    >
+                        <option value="0" selected={isSelectedSubjectNeed('Trigonometry')}>
+                            Trigonometry
+                        </option>
+                        <option value="1" selected={isSelectedSubjectNeed('Pre-calculus')}>
+                            Pre-calculus
+                        </option>
+                        <option value="2" selected={isSelectedSubjectNeed('Algebra')}>
+                            Algebra
+                        </option>
+                        <option value="3" selected={isSelectedSubjectNeed('Linear Algebra')}>
+                            Linear Algebra
+                        </option>
+                        <option value="4" selected={isSelectedSubjectNeed('Health Sciences')}>
+                            Health Sciences
+                        </option>
+                        <option value="5" selected={isSelectedSubjectNeed('Statistics')}>
+                            Statistics
+                        </option>
+                        <option value="6" selected={isSelectedSubjectNeed('Chemistry')}>
+                            Chemistry
+                        </option>
+                        <option value="7" selected={isSelectedSubjectNeed('Biology')}>
+                            Biology
+                        </option>
+                    </select>
+                </label>
                 
                 <FormGroup>
                     <FormLabel>Preferred Method of Tutoring:</FormLabel> 
