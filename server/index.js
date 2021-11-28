@@ -41,6 +41,21 @@ app.post('/login', (request, response) => {
     })
 });
 
+app.post('/register', (request, response) => {
+  const email = request.body.registerEmail
+  const password = request.body.registerPassword
+  const name = request.body.registerName
+
+  db.query('INSERT INTO user(email, password, name) VALUES (?, ?, ?)',
+    [email, password, name],
+    (error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+      }
+    })
+});
+
 app.post('/userprofile', (request, response) => {
   const userId = request.body.userId
 

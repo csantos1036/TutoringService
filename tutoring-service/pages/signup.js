@@ -1,10 +1,53 @@
 // File - /pages/index.js
+import React, { useState } from "react";
 import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '../components/layout'
 import { Form, FormControl, Button, FormLabel, FormGroup } from 'react-bootstrap'
+import Axios from 'axios'
 
 export default function SignUp() {
+  const [email, setEmail] = useState('')
+  const [password1, setPassword1] = useState('')
+  const [password2, setPassword2] = useState('')
+  const [name, setName] = useState('')
+
+  const validEmailDomains = [
+    'hotmail.com',
+    'gmail.com',
+    'live.com',
+    'yahoo.com'
+  ]
+
+  const postToDB = () => {
+    Axios.post('http://localhost:3001/register', {
+      registerEmail: email,
+      registerPassword: password1,
+      registerName: name
+    }).then((response) => {
+      if (response.data[0] === 'valid') {
+        setUserId(response.data[1])
+      }
+    })
+  }
+
+  const submit = () => {
+    const splitEmailArr = email.split("@")
+    if (splitEmailArr.length !== 2 ||
+        splitEmailArr[0].length === 0 ||
+        !validEmailDomains.includes(splitEmailArr[1])) {
+      console.log(splitEmailArr)
+      console.log("Invalid email")
+      return;
+    } else if (password1.length === 0 || password1 !== password2) {
+      console.log("Passwords do not match")
+    } else if (name.length === 0) {
+      console.log('Enter a name')
+    } else {
+      postToDB();
+    }
+  }
+
   return (
       <>
         <Head>
@@ -20,7 +63,12 @@ export default function SignUp() {
                             Email
                           </div>
                         </FormLabel>
-                        <FormControl type="text" placeholder="useremail@domain.com" className="textBox" />
+                        <FormControl 
+                          type="text" 
+                          placeholder="useremail@domain.com"
+                          className="textBox"
+                          onChange={(event) => setEmail(event.target.value)}
+                        />
                     </FormGroup>
                     <FormGroup>
                         <FormLabel>
@@ -28,7 +76,11 @@ export default function SignUp() {
                             Password 
                             </div>
                           </FormLabel>
-                      <FormControl type="password" className="textBox" />
+                      <FormControl 
+                        type="password"
+                        className="textBox"
+                        onChange={(event) => setPassword1(event.target.value)}
+                      />
                     </FormGroup>
                     <FormGroup>
                         <FormLabel>
@@ -36,7 +88,11 @@ export default function SignUp() {
                                 Verify Password
                             </div>
                           </FormLabel>
-                      <FormControl type="password" className="textBox" />
+                      <FormControl
+                        type="password"
+                        className="textBox"
+                        onChange={(event) => setPassword2(event.target.value)}
+                      />
                     </FormGroup>
                     <FormGroup>
                         <FormLabel>
@@ -44,12 +100,16 @@ export default function SignUp() {
                                 Full Name
                             </div>
                           </FormLabel>
-                      <FormControl type="name" className="textBox" />
+                      <FormControl 
+                        type="name"
+                        className="textBox"
+                        onChange={(event) => setName(event.target.value)}
+                      />
                     </FormGroup>
                     
                     <Link href="profiles/user-profile">
                       <a>
-                        <button class="loginButton" variant="primary">
+                        <button onClick={submit} class="loginButton" variant="primary">
                           Submit
                         </button>
                       </a>

@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '../components/layout'
 import { Form, FormControl, Button, FormLabel, FormGroup } from 'react-bootstrap'
+import Axios from 'axios'
 
 export default function Home() {
   const [email, setEmail] = useState('')
@@ -15,7 +16,6 @@ export default function Home() {
       loginEmail: email,
       loginPassword: password
     }).then((response) => {
-      console.log(response)
       if (response.data[0] === 'valid') {
         setUserId(response.data[1])
       }
@@ -40,6 +40,7 @@ export default function Home() {
                         <FormControl type="text"
                           placeholder="useremail@domain.com"
                           className="textBox"
+                          onChange={(event) => setEmail(event.target.value)}
                         />
                     </FormGroup>
                     <FormGroup>
@@ -51,6 +52,7 @@ export default function Home() {
                           <FormControl
                             type="password"
                             className="textBox"
+                            onChange={(event) => setPassword(event.target.value)}
                           />
                     </FormGroup>
                     <div class = "details">

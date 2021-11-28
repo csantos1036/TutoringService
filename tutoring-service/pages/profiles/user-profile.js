@@ -6,13 +6,13 @@ import { Form, FormControl, Button, FormLabel, FormGroup } from 'react-bootstrap
 import Axios from 'axios'
 
 export default function UserProfile() {
-  const [points, setPoints] = useState(0)
-  const [name, setName] = useState('')
-  const [method, setMethod] = useState('')
-  const [subjectStrengths, setSubjectStrengths] = useState([])
-  const [subjectNeeds, setSubjectNeeds] = useState([])
+    const [points, setPoints] = useState(0)
+    const [name, setName] = useState('')
+    const [method, setMethod] = useState('')
+    const [subjectStrengths, setSubjectStrengths] = useState([])
+    const [subjectNeeds, setSubjectNeeds] = useState([])
 
-  const populateUserProfile = () => {
+    const populateUserProfile = () => {
     Axios.post('http://localhost:3001/userprofile', {
         userId : 1 // props.userId
     }).then((response) => {
@@ -40,28 +40,26 @@ export default function UserProfile() {
     })
   }
 
-  useEffect(() => {
-    populateUserProfile()
-  }, [])
+    useEffect(() => {
+        populateUserProfile()
+    }, [])
 
-  const handleSubmit = () => {}
+    const handleSubmit = () => {}
 
-  const isSelectedMethod = (refMethod) => {
-      if (refMethod === method) {
-          return true;
-      }
-      return false;
-  }
+  
+    const isSelectedSubjectStrength = (refSubject) => {
+      return subjectStrengths.includes(refSubject);
+    }
+    
+    const isSelectedSubjectNeed = (refSubject) => {
+        return subjectNeeds.includes(refSubject);
+    }
 
-  const isSelectedSubjectStrength = (refSubject) => {
-    return subjectStrengths.includes(refSubject);
-  }
+    const isSelectedMethod = (refMethod) => {
+        return refMethod === method;
+    }
 
-  const isSelectedSubjectNeed = (refSubject) => {
-    return subjectNeeds.includes(refSubject);
-  }
-
-  return (
+    return (
     <>
         <Layout>
             <Head>
