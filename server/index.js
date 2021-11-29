@@ -4,7 +4,8 @@ const mysql = require('mysql');
 const cors = require('cors');
 const exphbs = require('express-handlebars');
 const fileUpload = require('express-fileupload');
-const objectAssign = require('object-assign');
+const fs = require('fs');
+const path = require('path');
 
 app.use(cors());
 app.use(express.json());
@@ -148,6 +149,7 @@ app.post('/upload', (request, response) => {
   const userId = request.body.userId;
   const points = parseInt(request.body.points);
   const subject = request.body.subject
+  let name = ''
   let userPoints = 0;
   let file;
   let uploadPath;
@@ -160,12 +162,13 @@ app.post('/upload', (request, response) => {
   uploadPath = __dirname + '/upload/' + file.name;
   file.mv(uploadPath);
 
-  db.query('SELECT points FROM user WHERE userId=?',
+  db.query('SELECT name, points FROM user WHERE userId=?',
     [userId],
     (error, result) => {
       if (error) {
         console.log(error)
       } else {
+        name = result[0].name
         userPoints = parseInt(result[0].points);
         newUserPoints = points + userPoints
 
@@ -176,18 +179,40 @@ app.post('/upload', (request, response) => {
               console.log(error);
             }
         });
-      }
-    }
-  );
-  
-  db.query('INSERT INTO file (fileName, userId, subject) VALUES (?, ?, ?)',
-    [file.name, userId, subject],
-    (error, result) => {
-      if (error) {
-        console.log(error);
+
+        db.query('INSERT INTO file (fileName, name, subject) VALUES (?, ?, ?)',
+          [file.name, name, subject],
+          (error, result) => {
+            if (error) {
+              console.log(error);
+            }
+          }
+        );
       }
     }
   );
 });
+
+app.get('/materiallist', (request, response) => {
+  db.query('SELECT * FROM file',
+    (error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        response.send(result)
+      }
+    }
+  );
+});
+
+app.post('/filepath', (request, response) => {
+  const filePath = __dirname + '/upload/' +  request.body.file;
+  const stat = fs.statSync(filePath);
+  response.writeHead(200, {
+    'Content-Length': stat.size,
+  })
+  const readStream = fs.createReadStream(filePath)
+  readStream.pipe(response)
+})
 
 app.listen(3001, ()=>{});
