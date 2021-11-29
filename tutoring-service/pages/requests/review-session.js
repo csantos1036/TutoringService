@@ -13,6 +13,8 @@ export default function ReviewSession() {
     const [userMap, setUserMap] = useState(null)
     const [points, setPoints] = useState('')
     const [pointsAdded, setPointsAdded] = useState('')
+    const [deleteMatch, setDeleteMatch] = useState(false)
+    const [deleteTutorUser, setDeleteTutorUser] = useState('')
 
     const getUserId = () => {
         Axios.get('http://localhost:3001/getuserid').then((response) => {
@@ -57,9 +59,14 @@ export default function ReviewSession() {
     function MaterialList(props) {
         let ListOfItems = []
         props.matches.forEach((x, i) => {
-            ListOfItems.push(
-                <option value={x.userId} selected={isSelected(x.userId)}>{x.name}</option>
-            )
+            if (deleteMatch && deleteTutorUser == x.userId) {
+
+            }
+            else {
+                ListOfItems.push(
+                    <option value={x.userId} selected={isSelected(x.userId)}>{x.name}</option>
+                )
+            }
         })
         return (
             ListOfItems
@@ -70,7 +77,7 @@ export default function ReviewSession() {
         getUserId()
     }, [])
 
-    const displayUser = (userId, userMap) => {
+    const changeTutor = (userId, userMap) => {
         if (userMap === null) return;
         Axios.post('http://localhost:3001/subjectstrength', {
             userId : userId,
@@ -82,12 +89,15 @@ export default function ReviewSession() {
     }
 
     const handleOnChange = (event) => {
-        displayUser(parseInt(event.target.value), userMap)
+        event.preventDefault()
+        changeTutor(parseInt(event.target.value), userMap)
     }
 
     const handleSubmit = () => {
         addPoints()
         alert('Review sent!')
+        setDeleteMatch(true)
+        setDeleteTutorUser(tutorUserId)
     }
 
     return (
@@ -123,6 +133,7 @@ export default function ReviewSession() {
                         <FormGroup>
                             <FormLabel> Tutors: </FormLabel>
                             <select onChange={handleOnChange}>
+                                <option value = "-1" selected>[select]</option>
                                 <MaterialList matches={matches}></MaterialList>
                             </select>
                         </FormGroup>
@@ -138,13 +149,11 @@ export default function ReviewSession() {
                             />
                         </FormGroup>
                         </div>
-                        <Link href="../profiles/student">
                             <a>
                                 <Button onClick={handleSubmit}>
                                     Submit
                                 </Button>
                             </a>
-                        </Link>
                     </Form>
                 </div>
 
