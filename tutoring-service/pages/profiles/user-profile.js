@@ -6,15 +6,29 @@ import { Form, FormControl, Button, FormLabel, FormGroup } from 'react-bootstrap
 import Axios from 'axios'
 
 export default function UserProfile() {
+    const [userId, setUserId] = useState(1)
     const [points, setPoints] = useState('')
     const [name, setName] = useState('')
     const [method, setMethod] = useState('')
     const [subjectStrengths, setSubjectStrengths] = useState([])
     const [subjectNeeds, setSubjectNeeds] = useState([])
 
+    const subjects = [
+        'Trigonometry', 
+        'Pre-calculus', 
+        'Algebra', 
+        'Linear Algebra', 
+        'Health Sciences', 
+        'Statistics', 
+        'Chemistry', 
+        'Biology'
+    ]
+    const methods = ['Online', 'Face to Face']
+
     const getUserId = () => {
         Axios.get('http://localhost:3001/getuserid').then((response) => {
             populateUserProfile(response.data[0])
+            setUserId(response.data[0])
         })
     }
 
@@ -50,7 +64,44 @@ export default function UserProfile() {
         getUserId()
     }, [])
 
-    const handleSubmit = () => {}
+    const updatePreferences = (ss, sn, m) => {
+        Axios.post('http://localhost:3001/updatesubjects', {
+            userId : userId,
+            subjectStrengths: ss,
+            subjectNeeds: sn
+        }).then((response) => {
+            console.log(response)
+        })
+        Axios.post('http://localhost:3001/updatemethod', {
+            userId : userId,
+            method: m
+        }).then((response) => {
+            console.log(response)
+        })
+        alert('Preferences updated!')
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        const subjectStrengths = []
+        for (let option of event.target[0].options) {
+            if (option.selected) {
+                subjectStrengths.push(subjects[parseInt(option.value)])
+            }
+        }
+        const subjectNeeds = []
+        for (let option of event.target[1].options) {
+            if (option.selected) {
+                subjectNeeds.push(subjects[parseInt(option.value)])
+            }
+        }
+        if (subjectStrengths.length === 0 || subjectNeeds.length === 0) {
+           alert('Please select at least one subject for subject strengths or needs!')
+           return;
+        }
+        const method = methods[parseInt(event.target[2].value)]
+        updatePreferences(subjectStrengths, subjectNeeds, method)
+    }
 
     const isSelectedSubjectStrength = (refSubject) => {
       return subjectStrengths.includes(refSubject);

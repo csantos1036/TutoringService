@@ -441,4 +441,69 @@ app.post('/matchtutors', (request, response) => {
   });
 });
 
+app.post('/updatesubjects', (request, response) => {
+  const userId = request.body.userId;
+  const ss = request.body.subjectStrengths;
+  const sn = request.body.subjectNeeds;
+
+  const updateStrengths = (userId, ss) => {
+    ss.forEach((x, i) => {
+      db.query('INSERT INTO subject_strength(userId, subject) VALUES (?, ?)',
+        [userId, x],
+        (error, result) => {
+          if (error) {
+            console.log(error);
+          }
+        }
+      );
+    })
+  }
+
+  const updateNeeds = (userId, sn) => {
+    sn.forEach((x, i) => {
+      db.query('INSERT INTO subject_need(userId, subject) VALUES (?, ?)',
+        [userId, x],
+        (error, result) => {
+          if (error) {
+            console.log(error);
+          }
+        }
+      );
+    })
+  }
+
+  db.query('DELETE from subject_strength where userId=?',
+    [userId],
+    (error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        updateStrengths(userId, ss)
+        db.query('DELETE from subject_need where userId=?',
+        [userId],
+        (error, result) => {
+          if (error) {
+            console.log(error);
+          } else {
+            updateNeeds(userId, sn)
+          }
+        });
+      }
+    });
+});
+
+app.post('/updatemethod', (request, response) => {
+  const userId = request.body.userId;
+  const method = request.body.method;
+
+  db.query('UPDATE user SET method=? WHERE userId=?',
+    [method, userId],
+    (error, result) => {
+      if (error) {
+        console.log(error);
+      }
+    }
+  );
+});
+
 app.listen(3001, ()=>{});
