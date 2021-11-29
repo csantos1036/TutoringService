@@ -1,7 +1,0 @@
-AI: 100 - .75 - 1.3 - .05 - 1.9 - 1 (Assumming I get a 90 on hw4) -> I need a 78.2% on the final to get A
-
-Robot Vision: 100 - 7.75 -> 92.5 -> I need a 74% on the presentation to get B
-
-POOP: 100 - 1 + .3 - 1 - 2.5 (assumming 75 on D3) - 5 (assuming 50 on demo) -> I need a 100% on the final to get an A
-
-BioInformatics: 100 - 6.25 -> I need to get a 90% on my final to get an A, if extra credit is 5%, I can get a 72.5% to an A

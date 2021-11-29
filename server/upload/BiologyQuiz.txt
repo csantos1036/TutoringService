@@ -1,0 +1,29 @@
+Biology Quiz
+============
+
+Questions
+---------
+
+1) What is the primary oxygen-carrying protein found in red blood cells?
+2) What physical state of matter is intermediate between a solid and gas?
+3) Which of the following BEST describes the term static:
+    -stationary
+    -low
+    -constant
+    -used
+4) What is the general name for the rising and falling of sea levels in response to the forces exerted by the Moon and Sun?
+5) Approximately what fraction of Earth’s surface is covered by oceans:
+    -one-half
+    -two-thirds
+    -seven-tenths
+    -four-fifths
+    
+
+Answers
+-------
+
+1) hemoglobin
+2) liquid
+3) stationary
+4) tides
+5) seven-tenths
