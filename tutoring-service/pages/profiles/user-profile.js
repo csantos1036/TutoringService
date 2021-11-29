@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import Link from 'next/link'
 import Head from 'next/head'
 import Layout from '../../components/layout'
@@ -13,32 +13,35 @@ export default function UserProfile() {
     const [subjectNeeds, setSubjectNeeds] = useState([])
 
     const populateUserProfile = () => {
-    Axios.post('http://localhost:3001/userprofile', {
-        userId : 1 // props.userId
-    }).then((response) => {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        Axios.post('http://localhost:3001/userprofile', {
+            userId : urlParams.get('userId') 
+        }).then((response) => {
+            if (response.data[0] === 'valid') {
+                setPoints(response.data[1].points)
+                setName(response.data[1].name)
+                setMethod(response.data[1].method)
+            }
+        })
+
+        Axios.post('http://localhost:3001/subjectstrength', {
+            userId : urlParams.get('userId') 
+        }).then((response) => {
         if (response.data[0] === 'valid') {
-            setPoints(response.data[1].points)
-            setName(response.data[1].name)
-            setMethod(response.data[1].method)
+            setSubjectStrengths(response.data[1])
         }
-    })
+        })
 
-    Axios.post('http://localhost:3001/subjectstrength', {
-        userId : 1 // props.userId
-    }).then((response) => {
-      if (response.data[0] === 'valid') {
-        setSubjectStrengths(response.data[1])
-      }
-    })
-
-    Axios.post('http://localhost:3001/subjectneed', {
-        userId : 1 // props.userId
-    }).then((response) => {
-      if (response.data[0] === 'valid') {
-        setSubjectNeeds(response.data[1])
-      }
-    })
-  }
+        Axios.post('http://localhost:3001/subjectneed', {
+            userId : urlParams.get('userId') 
+        }).then((response) => {
+        if (response.data[0] === 'valid') {
+            setSubjectNeeds(response.data[1])
+        }
+        })
+    }
 
     useEffect(() => {
         populateUserProfile()
@@ -92,7 +95,7 @@ export default function UserProfile() {
                 Point Balance: { points }
             </h3>
 
-            <p> Name: { name } </p>
+            <p> Name: { name }</p>
 
             <div class = "left">
             <Form>

@@ -79,5 +79,6 @@ class StudentRequestAcceptance extends Component {
         )
     }
 }
+
 export default StudentRequestAcceptance;
 
