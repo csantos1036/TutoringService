@@ -25,18 +25,21 @@ export default function ViewMatches() {
         }).then((response) => {
             setMatches(response.data)
             const map = new Map()
+            let id = 1
             response.data.forEach((x, i) => {
                 if (i === 0) {
+                    id = x.userId
                     setStudentUserId(x.userId)
                 }
                 map.set(x.userId, x)
             })
             setUserMap(map)
+            displayUser(id, map)
         })
     }
 
     const handleOnChange = (event) => {
-        displayUser(parseInt(event.target.value))
+        displayUser(parseInt(event.target.value), userMap)
     }
 
     const subjectsToString = (subjects) => {
@@ -49,7 +52,7 @@ export default function ViewMatches() {
         return str
     } 
 
-    const displayUser = (userId) => {
+    const displayUser = (userId, userMap) => {
         if (userMap === null) return;
         Axios.post('http://localhost:3001/subjectneed', {
             userId : userId,
