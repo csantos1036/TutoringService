@@ -32,13 +32,6 @@ export default function Tutor() {
                 
                 <h1>Tutor</h1>
 
-                <Link href="../requests/student-requests">
-                      <a>
-                        <button class="loginButton" variant="primary">
-                            Student Requests
-                        </button>
-                      </a>
-                </Link>
                 <Link href="../requests/view-student-matches">
                       <a>
                         <button class="loginButton" variant="primary">

@@ -18,6 +18,8 @@ export default function Home() {
     }).then((response) => {
       if (response.data[0] === 'valid') {
         setUserId(response.data[1])
+        console.log("Hello")
+        window.location.assign(`http://localhost:3000/profiles/user-profile?userId=${response.data[1]}`)
       }
     })
   }
@@ -58,13 +60,9 @@ export default function Home() {
                     <div class = "details">
                       <Link href="/"><a>Forgot Password?</a></Link>
                     </div>
-                    <Link href="profiles/user-profile">
-                      <a>
-                        <Button onClick={login} className="loginButton" variant="primary">
+                        <Button className="loginButton" variant="primary" onClick={login}>
                           Login
                         </Button>
-                      </a>
-                    </Link>
                 </Form>
                 <div class ="details">
                     Don't have an account? Create one <Link href="signup"><a>here</a></Link>.
