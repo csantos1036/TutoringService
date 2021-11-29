@@ -19,9 +19,6 @@ export default function UserProfile() {
     }
 
     const populateUserProfile = (userId) => {
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-
         Axios.post('http://localhost:3001/userprofile', {
             userId : userId 
         }).then((response) => {

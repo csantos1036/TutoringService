@@ -260,4 +260,81 @@ app.post('/request', (request, response) => {
     });
 });
 
+app.post('/matchstudents', (request, response) => {
+  const userId = request.body.userId;
+
+  const generateQueryCondition2 = (result) => {
+    if (result.length === 1) {
+      return 'userId=?';
+    }
+    let query = '';
+    for (let i = 0; i < result.length - 1; i++) {
+      query += 'userId=? OR ';
+    }
+    query += 'userId=?';
+    return query;
+  }
+
+  const generateQueryCondition = (result) => {
+    if (result.length === 1) {
+      return 'subject=?';
+    }
+    let query = '';
+    for (let i = 0; i < result.length - 1; i++) {
+      query += 'subject=? OR ';
+    }
+    query += 'subject=?';
+    return query;
+  }
+
+  const generateParameters = (result) => {
+    const parameters = [];
+    result.forEach((x, i) => {
+      parameters.push(
+        x.subject
+      )
+    })
+    return parameters;
+  };
+
+  db.query('SELECT subject FROM subject_strength WHERE userId=?',
+    [userId],
+    (error, result1) => {
+      if (error) {
+        console.log(error);
+      } else {
+        const query = 'SELECT userId FROM subject_need WHERE ' + generateQueryCondition(result1);
+        const parameters = generateParameters(result1);
+        db.query(
+          query,
+          parameters,
+          (error, result2) => {
+            if (error) {
+              console.log(error);
+            } else {
+              const set = new Set();
+              result2.forEach((x, i) => {
+                set.add(x.userId);
+              });
+              const parameters2 = [];
+              set.forEach((x) => {
+                parameters2.push(x);
+              })
+              const query2 = 'SELECT * FROM user WHERE ' + generateQueryCondition2(result2);
+              db.query(
+                query2,
+                parameters2,
+                (error, result3) => {
+                  if (error) {
+                    console.log(error);
+                  } else {
+                    response.send(result3)
+                  }
+                });
+            }
+         });
+      }
+  });
+});
+
 app.listen(3001, ()=>{});
