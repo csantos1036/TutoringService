@@ -10,6 +10,7 @@ export default function ViewMatches() {
     const [name, setName] = useState('')
     const [subjects, setSubjects] = useState('')
     const [email, setEmail] = useState('')
+    const [tutoringMethod, setTutoringMethod] = useState('')
     const [userMap, setUserMap] = useState(null)
     const [studentUserId, setStudentUserId] = useState(1)
 
@@ -62,6 +63,7 @@ export default function ViewMatches() {
                 setSubjects(subjectsToString(response.data[1]))
                 setName(userMap.get(userId).name)
                 setEmail(userMap.get(userId).email)
+                setTutoringMethod(userMap.get(userId).method)
             }
         })
     }
@@ -128,6 +130,7 @@ export default function ViewMatches() {
                 <p>Name: {name} </p>
                 <p>Subject Needs: {subjects} </p>
                 <p>Email: {email} </p>
+                <p>Preferred Method of Tutoring: {tutoringMethod} </p>
 
 
                 <footer>
