@@ -18,8 +18,10 @@ export default function Home() {
     }).then((response) => {
       if (response.data[0] === 'valid') {
         setUserId(response.data[1])
-        console.log("Hello")
         window.location.assign(`http://localhost:3000/profiles/user-profile?userId=${response.data[1]}`)
+      }
+      else {
+        alert('Invalid Login')
       }
     })
   }

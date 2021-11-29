@@ -37,12 +37,12 @@ export default function SignUp() {
         splitEmailArr[0].length === 0 ||
         !validEmailDomains.includes(splitEmailArr[1])) {
       console.log(splitEmailArr)
-      console.log("Invalid email")
+      alert('Invalid email')
       return;
     } else if (password1.length === 0 || password1 !== password2) {
-      console.log("Passwords do not match")
+      alert('Passwords do not match')
     } else if (name.length === 0) {
-      console.log('Enter a name')
+      alert('Enter a name')
     } else {
       postToDB();
     }
