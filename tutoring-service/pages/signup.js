@@ -107,7 +107,7 @@ export default function SignUp() {
                       />
                     </FormGroup>
                     
-                    <Link href="profiles/user-profile">
+                    <Link href="/">
                       <a>
                         <button onClick={submit} class="loginButton" variant="primary">
                           Submit
