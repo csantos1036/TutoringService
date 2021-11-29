@@ -174,7 +174,7 @@ export default function UserProfile() {
                     </select>
                 </FormGroup>
             </div>
-                <Button type ="submit">
+                <Button type ="submit" onlick={populateUserProfile}>
                     Submit
                 </Button>
             </Form>

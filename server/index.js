@@ -247,6 +247,33 @@ app.post('/removepoints', (request, response) => {
     });
 });
 
+app.post('/addpoints', (request, response) => {
+  const userId = request.body.userId;
+  const pointsAdded = parseInt(request.body.pointsAdded);
+
+  db.query('SELECT points FROM user WHERE userId=?',
+    [userId],
+    (error, result) => {
+      if (error) {
+        console.log(error)
+      } else {
+        let userPoints = parseInt(result[0].points);;
+        let newUserPoints = userPoints + pointsAdded;
+
+        db.query('UPDATE user SET points=? WHERE userId=?',
+          [newUserPoints, userId],
+          (error, result) => {
+            if (error) {
+              console.log(error);
+            } else {
+              response.send(['valid', newUserPoints]);
+            }
+        });
+      }
+    });
+});
+
+
 app.post('/request', (request, response) => {
   const userId = request.body.userId;
   const method = request.body.method;

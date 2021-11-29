@@ -14,6 +14,7 @@ export default function TutorRequest() {
         Axios.get('http://localhost:3001/getuserid').then((response) => {
             populateUser(response.data[0])
             setUserId(response.data[0])
+            setPoints(response.data[1].points)
         })
     }
     
