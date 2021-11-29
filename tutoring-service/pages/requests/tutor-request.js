@@ -2,6 +2,13 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Layout from '../../components/layout'
 import React, { Component, Redirect } from "react";
+const addStudentRequestID = () => {
+    Axios.post("http://localhost:3000/requests/tutor-request" , {
+        requestId: requestId,
+    }).then(() => {
+        console.log("success");
+    });
+};
 
 class TutorRequest extends Component {
 
@@ -53,7 +60,7 @@ class TutorRequest extends Component {
                     <h2>Redeemable Points: </h2>
 
                     <form>
-                        <button onClick={this.handleSubmit} >
+                        <button onClick={addStudentRequestID,this.handleSubmit} >
                             Send a Tutor Request
                         </button>
                     </form>
@@ -72,3 +79,4 @@ class TutorRequest extends Component {
 }
 
 export default TutorRequest;
+
