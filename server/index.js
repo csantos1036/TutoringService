@@ -6,6 +6,7 @@ const exphbs = require('express-handlebars');
 const fileUpload = require('express-fileupload');
 const fs = require('fs');
 const path = require('path');
+let userId = 1;
 
 app.use(cors());
 app.use(express.json());
@@ -17,6 +18,10 @@ const db = mysql.createConnection({
   password: 'sOVR1FnShz',
   database: 'pD5hLeicAv'
 });
+
+app.get('/getuserid', (request, response) => {
+  response.send([userId])
+})
 
 app.post('/login', (request, response) => {
   const email = request.body.loginEmail;
@@ -31,6 +36,7 @@ app.post('/login', (request, response) => {
     if (result.length !== 0 && result[0].password === password) {
       res = ['valid', result[0].userId];
     }
+    userId = result[0].userId;
     return res;
   }
 
@@ -211,8 +217,34 @@ app.post('/filepath', (request, response) => {
   response.writeHead(200, {
     'Content-Length': stat.size,
   })
-  const readStream = fs.createReadStream(filePath)
-  readStream.pipe(response)
+  const readStream = fs.createReadStream(filePath);
+  readStream.pipe(response);
+})
+
+app.post('/removepoints', (request, response) => {
+  const userId = request.body.userId;
+  const pointsDeducted = parseInt(request.body.pointsDeducted);
+
+  db.query('SELECT points FROM user WHERE userId=?',
+    [userId],
+    (error, result) => {
+      if (error) {
+        console.log(error)
+      } else {
+        let userPoints = parseInt(result[0].points);
+        let newUserPoints = userPoints - pointsDeducted;
+
+        db.query('UPDATE user SET points=? WHERE userId=?',
+          [newUserPoints, userId],
+          (error, result) => {
+            if (error) {
+              console.log(error);
+            } else {
+              response.send(['valid', newUserPoints]);
+            }
+        });
+      }
+    });
 })
 
 app.listen(3001, ()=>{});

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useState, useEffect } from "react";
 import Link from 'next/link'
 import Head from 'next/head'
 import Layout from '../../components/layout'
@@ -12,12 +12,18 @@ export default function UserProfile() {
     const [subjectStrengths, setSubjectStrengths] = useState([])
     const [subjectNeeds, setSubjectNeeds] = useState([])
 
-    const populateUserProfile = () => {
+    const getUserId = () => {
+        Axios.get('http://localhost:3001/getuserid').then((response) => {
+            populateUserProfile(response.data[0])
+        })
+    }
+
+    const populateUserProfile = (userId) => {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
 
         Axios.post('http://localhost:3001/userprofile', {
-            userId : urlParams.get('userId') 
+            userId : userId 
         }).then((response) => {
             if (response.data[0] === 'valid') {
                 setPoints(response.data[1].points)
@@ -27,7 +33,7 @@ export default function UserProfile() {
         })
 
         Axios.post('http://localhost:3001/subjectstrength', {
-            userId : urlParams.get('userId') 
+            userId : userId
         }).then((response) => {
         if (response.data[0] === 'valid') {
             setSubjectStrengths(response.data[1])
@@ -35,7 +41,7 @@ export default function UserProfile() {
         })
 
         Axios.post('http://localhost:3001/subjectneed', {
-            userId : urlParams.get('userId') 
+            userId : userId
         }).then((response) => {
         if (response.data[0] === 'valid') {
             setSubjectNeeds(response.data[1])
@@ -44,7 +50,7 @@ export default function UserProfile() {
     }
 
     useEffect(() => {
-        populateUserProfile()
+        getUserId()
     }, [])
 
     const handleSubmit = () => {}

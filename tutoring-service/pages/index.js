@@ -9,7 +9,6 @@ import Axios from 'axios'
 export default function Home() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [userId, setUserId] = useState(0)
 
   const login = () => {
     Axios.post('http://localhost:3001/login', {
@@ -17,9 +16,7 @@ export default function Home() {
       loginPassword: password
     }).then((response) => {
       if (response.data[0] === 'valid') {
-        setUserId(response.data[1])
-        console.log("Hello")
-        window.location.assign(`http://localhost:3000/profiles/user-profile?userId=${response.data[1]}`)
+        window.location.assign(`http://localhost:3000/profiles/user-profile`)
       }
     })
   }
