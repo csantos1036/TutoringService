@@ -6,7 +6,7 @@ import { Form, FormControl, Button, FormLabel, FormGroup } from 'react-bootstrap
 import Axios from 'axios'
 
 export default function UserProfile() {
-    const [points, setPoints] = useState(0)
+    const [points, setPoints] = useState('')
     const [name, setName] = useState('')
     const [method, setMethod] = useState('')
     const [subjectStrengths, setSubjectStrengths] = useState([])

@@ -5,14 +5,22 @@ import Layout from '../../components/layout'
 import Axios from 'axios'
 
 export default function TutorRequest() {
-    const [points, setPoints] = useState(0)
+    const [userId, setUserId] = useState('')
+    const [points, setPoints] = useState('')
     const [method, setMethod] = useState('')
     const pointsDeducted = 5
+
+    const getUserId = () => {
+        Axios.get('http://localhost:3001/getuserid').then((response) => {
+            populateUser(response.data[0])
+            setUserId(response.data[0])
+        })
+    }
     
-    const populateUser = () =>
+    const populateUser = (userId) =>
     {
         Axios.post('http://localhost:3001/userprofile', {
-            userId: 1, // urlParams.get('userId') 
+            userId: userId 
         }).then((response) => {
             if (response.data[0] === 'valid') {
                 setPoints(response.data[1].points)
@@ -23,7 +31,7 @@ export default function TutorRequest() {
 
     const removePoints = () => {
         Axios.post('http://localhost:3001/removepoints', {
-            userId: 1, // urlParams.get('userId') 
+            userId: userId, 
             pointsDeducted: pointsDeducted
         }).then((response) => {
             if (response.data[0] === 'valid') {
@@ -34,22 +42,18 @@ export default function TutorRequest() {
 
     const postRequest = () => {
         Axios.post('http://localhost:3001/request', {
-            userId: 1, // urlParams.get('userId') 
-            pointsDeducted: pointsDeducted
-        }).then((response) => {
-            if (response.data[0] === 'valid') {
-                setPoints(response.data[1].points)
-            }
-        })
+            userId: userId,
+            method: method
+        }).then((response) => {})
     }
 
     useEffect(() => {
-        populateUser()
+        getUserId()
     }, [])
 
     const handleSubmit = () => {
         if (points < 5) {
-            alert('Not enough points, you can tutor to reach 5 again!')
+            alert(`Not enough points, you can tutor or upload materials to reach ${pointsDeducted} points again!`)
             return
         }
         removePoints()

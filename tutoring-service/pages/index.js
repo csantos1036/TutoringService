@@ -17,6 +17,8 @@ export default function Home() {
     }).then((response) => {
       if (response.data[0] === 'valid') {
         window.location.assign(`http://localhost:3000/profiles/user-profile`)
+      } else {
+        alert('Wrong username and password!')
       }
     })
   }

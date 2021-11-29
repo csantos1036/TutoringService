@@ -219,7 +219,7 @@ app.post('/filepath', (request, response) => {
   })
   const readStream = fs.createReadStream(filePath);
   readStream.pipe(response);
-})
+});
 
 app.post('/removepoints', (request, response) => {
   const userId = request.body.userId;
@@ -245,6 +245,19 @@ app.post('/removepoints', (request, response) => {
         });
       }
     });
-})
+});
+
+app.post('/request', (request, response) => {
+  const userId = request.body.userId;
+  const method = request.body.method;
+
+  db.query('INSERT INTO request(userId, method) VALUES (?, ?)',
+    [userId, method],
+    (error, result) => {
+      if (error) {
+        console.log(error);
+      }
+    });
+});
 
 app.listen(3001, ()=>{});

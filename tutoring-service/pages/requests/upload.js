@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from 'next/link'
 import Head from 'next/head'
 import Layout from '../../components/layout'
@@ -6,10 +6,16 @@ import { Form, FormControl, Button, FormLabel, FormGroup } from 'react-bootstrap
 import Axios from 'axios'
 
 export default function Upload() {
+    const [userId, setUserId] = useState(1)
     const [myfile, setFile] = useState(null)
     const acceptableFiles = ['docx', 'pdf', 'ppt', 'pptx', 'txt']
     const awardedPoints = 2
 
+    const getUserId = () => {
+        Axios.get('http://localhost:3001/getuserid').then((response) => {
+            setUserId(response.data[0])
+        })
+    }
 
     const upload = (event) => {
         event.preventDefault()
@@ -17,7 +23,7 @@ export default function Upload() {
         const selectedSubject = event.target[1].value
         event.target[1].value = "Trigonometry"
         let data = new FormData()
-        data.append('userId', 1) // props.userId
+        data.append('userId', userId)
         data.append('points', awardedPoints)
         data.append('subject', selectedSubject)
         data.append('file', myfile)
@@ -38,6 +44,10 @@ export default function Upload() {
             setFile(event.target.files[0])
         }
     }
+
+    useEffect(() => {
+        getUserId()
+    }, [])
 
     return (
         <>
