@@ -70,6 +70,21 @@ export default function ReviewSession() {
         getUserId()
     }, [])
 
+    const displayUser = (userId, userMap) => {
+        if (userMap === null) return;
+        Axios.post('http://localhost:3001/subjectstrength', {
+            userId : userId,
+        }).then((response) => {
+            if (response.data[0] = 'valid') {
+                setTutorUserId(userId)
+            }
+        })
+    }
+
+    const handleOnChange = (event) => {
+        displayUser(parseInt(event.target.value), userMap)
+    }
+
     const handleSubmit = () => {
         addPoints()
         alert('Review sent!')
@@ -107,7 +122,7 @@ export default function ReviewSession() {
                         <div class = "left">
                         <FormGroup>
                             <FormLabel> Tutors: </FormLabel>
-                            <select>
+                            <select onChange={handleOnChange}>
                                 <MaterialList matches={matches}></MaterialList>
                             </select>
                         </FormGroup>
