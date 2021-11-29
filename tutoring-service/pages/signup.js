@@ -35,9 +35,9 @@ export default function SignUp() {
       console.log("Invalid email")
       return;
     } else if (password1.length === 0 || password1 !== password2) {
-      console.log("Passwords do not match")
+      alert('Passwords do not match')
     } else if (name.length === 0) {
-      console.log('Enter a name')
+      alert('Enter a name')
     } else {
       postToDB();
     }

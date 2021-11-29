@@ -99,8 +99,8 @@ export default function UserProfile() {
 
             <p> Name: { name }</p>
 
+            <Form onSubmit={handleSubmit}>
             <div class = "left">
-            <Form>
             <label> Subject Strengths:
                     <br/>
                     <select 
@@ -173,8 +173,11 @@ export default function UserProfile() {
                                 <option value="1" selected={isSelectedMethod('Face to Face')}>Face to Face</option>
                     </select>
                 </FormGroup>
-            </Form>
             </div>
+                <Button type ="submit">
+                    Submit
+                </Button>
+            </Form>
 
             <Link href="../requests/upload">
                       <a>
